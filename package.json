@@ -38,7 +38,7 @@
   "peerDependencies": {
     "@angular/core": "^2.0.0",
     "@ngx-translate/core": "^7.2.0",
-    "messageformat": "^1.0.2"
+    "messageformat": "^1.0.0"
   },
   "devDependencies": {
     "@angular/compiler": "^2.0.0",
