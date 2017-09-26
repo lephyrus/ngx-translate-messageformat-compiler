@@ -1,0 +1,12 @@
+/node_modules
+npm-debug.log
+
+*.d.ts
+*.metadata.json
+src/*.js
+/index.js
+
+coverage
+bundles
+
+**/.DS_Store
