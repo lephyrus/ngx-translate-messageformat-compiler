@@ -26,7 +26,8 @@ You need to configure `TranslateModule` so it uses `TranslateMessageFormatCompil
 ```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { TranslateModule, TranslateCompiler } from '@ngx-translate/core';
+import { TranslateCompiler, TranslateModule } from '@ngx-translate/core';
+import * as MessageFormat from 'messageformat';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 import { AppComponent } from "./app";
 
@@ -34,9 +35,9 @@ import { AppComponent } from "./app";
   imports: [
     BrowserModule,
     TranslateModule.forRoot({
-      loader: {
+      compiler: {
         provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler
+        useFactory: () => new TranslateMessageFormatCompiler(new MessageFormat())
       }
     })
   ],

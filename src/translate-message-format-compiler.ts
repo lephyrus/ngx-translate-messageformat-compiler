@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { TranslateCompiler } from '@ngx-translate/core';
 
-import { MessageFormatFactory } from './message-format-factory';
-
 /**
  * This compiler expects ICU syntax and compiles the expressions with messageformat.js
  */
 @Injectable()
 export class TranslateMessageFormatCompiler extends TranslateCompiler {
-  private messageFormat: any;
+  private messageFormat: MessageFormat;
 
-  constructor(private messageFormatFactory: MessageFormatFactory) {
+  constructor(messageFormat: any) {
     super();
-    this.messageFormat = this.messageFormatFactory.getInstance();
+    this.messageFormat = messageFormat as MessageFormat;
   }
 
   public compile(value: string, lang: string): string | Function {

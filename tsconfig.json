@@ -13,9 +13,9 @@
   },
   "files": [
     "index.ts",
-    "src/messageformat.d.ts",
     "src/translate-message-format-compiler.ts",
-    "src/translate-message-format-compiler.spec.ts"
+    "src/translate-message-format-compiler.spec.ts",
+    "types/messageformat.d.ts"
   ],
   "exclude": [
     "node_modules",

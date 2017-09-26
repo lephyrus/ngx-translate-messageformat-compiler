@@ -6,12 +6,10 @@ describe('TranslateMessageFormatCompiler', () => {
   let mfCompile: jasmine.Spy;
 
   beforeEach(() => {
-    const mf = new MessageFormat();
-    mfCompile = spyOn(mf, 'compile').and.callThrough();
+    const messageFormat = new MessageFormat();
+    mfCompile = spyOn(messageFormat, 'compile').and.callThrough();
 
-    compiler = new TranslateMessageFormatCompiler({
-      getInstance: () => mf
-    });
+    compiler = new TranslateMessageFormatCompiler(messageFormat);
   });
 
   describe('compile', () => {

@@ -2,6 +2,7 @@
 npm-debug.log
 
 *.d.ts
+!/types/*.d.ts
 *.metadata.json
 src/*.js
 /index.js
