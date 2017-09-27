@@ -56,6 +56,6 @@ If you're here, you probably know what you're looking for. If you do wonder what
 
 [Messageformat.js](https://messageformat.github.io/) is a compliant implementation for Javascript.
 
-Back in Angular 1, [angular-translate](https://github.com/angular-translate/angular-translate), formerly by @PascalPrecht, provided support for ICU syntax using messageformat.js.
-This compiler "plugin" adds the same rich pluralization support to the excellent [ngx-translate](https://github.com/ngx-translate/core).
-Thanks to @ocombe for his work and his support in getting pluggable compiler support into the core. Thanks also to @PascalPrecht for suggesting a contribution when I talked to him about this at Jazoon.
+Back in AngularJS, [angular-translate](https://github.com/angular-translate/angular-translate), formerly by @PascalPrecht, provided support for ICU syntax using messageformat.js.
+This compiler "plugin" adds the same rich pluralization support to the excellent [ngx-translate](https://github.com/ngx-translate/core) for Angular (2+).
+Thanks to @ocombe for his work and his supporting pluggable compilers in the core. Thanks also to @PascalPrecht for suggesting a contribution when I talked to him about this at Jazoon.
