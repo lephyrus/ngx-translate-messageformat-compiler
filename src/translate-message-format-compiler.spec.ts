@@ -3,19 +3,32 @@ import { TranslateMessageFormatCompiler } from './translate-message-format-compi
 
 describe('TranslateMessageFormatCompiler', () => {
   let compiler: TranslateMessageFormatCompiler;
+  let messageFormat: any;
   let mfCompile: jasmine.Spy;
 
   beforeEach(() => {
-    const messageFormat = new MessageFormat();
+    messageFormat = new MessageFormat();
     mfCompile = spyOn(messageFormat, 'compile').and.callThrough();
+  });
 
-    compiler = new TranslateMessageFormatCompiler(messageFormat);
+  describe('constructor', () => {
+    it('should use messageformat to compile the nested translations object', () => {
+      expect(() => new TranslateMessageFormatCompiler(undefined))
+        .toThrowError(/^Not\ a\ messageformat\ instance:/);
+
+      expect(() => new TranslateMessageFormatCompiler({}))
+        .toThrowError(/^Not\ a\ messageformat\ instance:/);
+
+      expect(() => new TranslateMessageFormatCompiler({ compile: 'foo' }))
+        .toThrowError(/^Not\ a\ messageformat\ instance:/);
+    });
   });
 
   describe('compile', () => {
     let icuString: string;
 
     beforeEach(() => {
+      compiler = new TranslateMessageFormatCompiler(messageFormat);
       icuString = '{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}';
     });
 
@@ -34,6 +47,7 @@ describe('TranslateMessageFormatCompiler', () => {
     let translations: Object;
 
     beforeEach(() => {
+      compiler = new TranslateMessageFormatCompiler(messageFormat);
       translations = {
         alpha: {
           one: '{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}',

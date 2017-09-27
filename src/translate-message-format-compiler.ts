@@ -10,6 +10,16 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
 
   constructor(messageFormat: any) {
     super();
+
+    try {
+      messageFormat.compile('')();
+    } catch (e) {
+      throw new TypeError([
+        `Not a messageformat instance: ${messageFormat}`,
+        `Please pass a messageformat instance to the TranslateMessageFormatCompiler constructor.`
+      ].join('\n'));
+    }
+
     this.messageFormat = messageFormat as MessageFormat;
   }
 
