@@ -1,0 +1,13 @@
+/node_modules
+npm-debug.log
+
+*.ts
+!*.d.ts
+*.spec.js
+*.spec.js.map
+*.spec.d.ts
+
+/bundles/*
+!/bundles/*.umd.js
+
+.DS_Store
