@@ -1,5 +1,9 @@
 import { TranslateCompiler } from '@ngx-translate/core';
 
+interface MessageFormat {
+  compile(value: any, lang: string): any;
+}
+
 /**
  * This compiler expects ICU syntax and compiles the expressions with messageformat.js
  */
