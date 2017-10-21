@@ -21,14 +21,18 @@ yarn add ngx-translate-messageformat-compiler messageformat
 
 ## Setup
 
+**Changed setup for v2:** You no longer need to provide a MessageFormat instance.
+The compiler will do this. You still need to have `messageformat` installed, of course.
+See CHANGELOG for more details.
+
 You need to configure `TranslateModule` so it uses `TranslateMessageFormatCompiler` as the compiler:
 
 ```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateCompiler, TranslateModule } from '@ngx-translate/core';
-import * as MessageFormat from 'messageformat';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
+
 import { AppComponent } from "./app";
 
 @NgModule({
@@ -37,7 +41,7 @@ import { AppComponent } from "./app";
     TranslateModule.forRoot({
       compiler: {
         provide: TranslateCompiler,
-        useFactory: () => new TranslateMessageFormatCompiler(new MessageFormat())
+        useClass: TranslateMessageFormatCompiler
       }
     })
   ],
