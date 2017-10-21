@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateCompiler } from '@ngx-translate/core';
+import * as MessageFormatStatic from 'messageformat';
 
 /**
  * This compiler expects ICU syntax and compiles the expressions with messageformat.js
@@ -8,19 +9,9 @@ import { TranslateCompiler } from '@ngx-translate/core';
 export class TranslateMessageFormatCompiler extends TranslateCompiler {
   private messageFormat: MessageFormat;
 
-  constructor(messageFormat: any) {
+  constructor() {
     super();
-
-    try {
-      messageFormat.compile('')();
-    } catch (e) {
-      throw new TypeError([
-        `Not a messageformat instance: ${messageFormat}`,
-        `Please pass a messageformat instance to the TranslateMessageFormatCompiler constructor.`
-      ].join('\n'));
-    }
-
-    this.messageFormat = messageFormat as MessageFormat;
+    this.messageFormat = new MessageFormatStatic();
   }
 
   public compile(value: string, lang: string): string | Function {
