@@ -50,7 +50,51 @@ import { AppComponent } from "./app";
 export class AppModule {}
 ```
 
+## Usage
+
+This library implements neither the syntax used for pluralization (et al) nor the "mechanics" for making translations work in your Angular app. The former is MessageFormat, the latter ngx-translate. Having said that, here's an example to get you started:
+
+### Example
+
+#### Translation strings:
+```json
+{
+  "things": "There {count, plural, =0{is} one{is} other{are}} {count, plural, =0{} one{a} other{several}} {count, plural, =0{nothing} one{thing} other{things}",
+  "people": "{gender, select, male{He is} female{She is} other{They are}} {how}"
+}
+```
+
+#### View template:
+```html
+<ul>
+  <li translate [translateParams]="{ count: 0 }">things</li>
+  <li translate [translateParams]="{ count: 1 }">things</li>
+  <li>{{'things' | translate:"{ count: 2 }"}}</li>
+</ul>
+<ul>
+  <li translate [translateParams]="{ gender: 'female', how: 'influential' }">people</li>
+  <li translate [translateParams]="{ gender: 'male', how: 'funny' }">people</li>
+  <li>{{'people' | translate:"{ how: 'affectionate' }"}}</li>
+</ul>
+```
+
+#### Output:
+```
+- There is nothing
+- There is a thing
+- There are several things
+- She is influential
+- He is funny
+- They are affectionate
+```
+
 Please note that while you can still use nesting in your translations (`{ login: { welcome: 'Welcome!' }}`) with respective keys (`login.welcome`), you lose the ability to access object properties in your placeholders: `'Hello {name.first} {name.last}'` won't work. Also note that this format uses single braces instead of double braces for placeholders.
+
+### Further information
+
+Get help on the message syntax for your translation strings: https://messageformat.github.io/guide/
+
+Get help on using ngx-translate (loading translations, using HTML tags in your strings, translate pipe vs. directive, etc.): https://github.com/ngx-translate/core
 
 ## About
 
