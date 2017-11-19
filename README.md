@@ -59,7 +59,7 @@ This library implements neither the syntax used for pluralization (et al) nor th
 #### Translation strings:
 ```json
 {
-  "things": "There {count, plural, =0{is} one{is} other{are}} {count, plural, =0{} one{a} other{several}} {count, plural, =0{nothing} one{thing} other{things}",
+  "things": "There {count, plural, =0{is} one{is} other{are}} {count, plural, =0{} one{a} other{several}} {count, plural, =0{nothing} one{thing} other{things}}",
   "people": "{gender, select, male{He is} female{She is} other{They are}} {how}"
 }
 ```
