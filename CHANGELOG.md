@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2017-12-28
+### Added
+- Support use with ngx-translate v9
+
+### Changed
+- Clarify usage section of README
+
+### Fixed
+- Typo in example syntax
+
 ## [2.0.1] - 2017-11-05
 ### Added
 - New section in README: Usage (incl. example)
