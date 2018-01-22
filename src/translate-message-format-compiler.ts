@@ -12,7 +12,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
     this.messageFormat = new MessageFormatStatic();
   }
 
-  public compile(value: string, lang: string): string | Function {
+  public compile(value: string, lang: string): Function {
     return this.messageFormat.compile(value, lang);
   }
 
