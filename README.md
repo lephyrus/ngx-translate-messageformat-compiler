@@ -51,6 +51,31 @@ import { AppComponent } from "./app";
 export class AppModule {}
 ```
 
+MessageFormat instances provide some methods to influence its behaviour, among them `setBiDiSupport`, `setIntlSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat.js/doc/MessageFormat.html
+You can override the values used when configuring MessageFormat by passing a configuration object to `TranslateMessageFormatCompiler`'s constructor. Here's the default:
+```ts
+{
+  biDiSupport: false,
+  intlSupport: false,
+  strictNumberSign: false
+}
+```
+
+This is how you would enable Intl support, for example:
+```ts
+export function TranslateMessageFormatCompilerFactory() {
+  return new TranslateMessageFormatCompiler({ intlSupport: true });
+}
+```
+```ts
+// ...
+TranslateModule.forRoot({
+  compiler: {
+  provide: TranslateCompiler,
+  useFactory: TranslateMessageFormatCompilerFactory
+}
+```
+
 ## Usage
 
 This library implements neither the syntax used for pluralization (et al) nor the "mechanics" for making translations work in your Angular app. The former is _MessageFormat_, the latter _ngx-translate_. Before you assume your problem is with _ngx-translate-messageformat-compiler_, please consult these ressources:
