@@ -1,7 +1,8 @@
+import { Inject, Optional } from '@angular/core';
 import { TranslateCompiler } from '@ngx-translate/core';
 import * as MessageFormatStatic from 'messageformat';
 
-import { defaultConfig, MessageFormatConfig } from './message-format-config';
+import { defaultConfig, MESSAGE_FORMAT_CONFIG, MessageFormatConfig } from './message-format-config';
 
 /**
  * This compiler expects ICU syntax and compiles the expressions with messageformat.js
@@ -9,7 +10,7 @@ import { defaultConfig, MessageFormatConfig } from './message-format-config';
 export class TranslateMessageFormatCompiler extends TranslateCompiler {
   private messageFormat: MessageFormat;
 
-  constructor(config?: MessageFormatConfig) {
+  constructor(@Optional() @Inject(MESSAGE_FORMAT_CONFIG) config?: MessageFormatConfig) {
     super();
 
     config = { ...defaultConfig, ...config };
