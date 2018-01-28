@@ -4,7 +4,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2018-01-22
+
+### Changed
+- The messageformat configuration object is now provided by using
+an injection token (MESSAGE_FORMAT_CONFIG) rather than by passing
+the configuration to the compiler's constructor using a factory
+function.
+
+### Fixed
+
+- Using the compiler without a configuration object for
+messageformat remains unchanged and continues working as
+before.
+
+### Removed
+
+- The use of InjectionToken requires at least Angular 4, so support
+for Angular v2 and ngx-translate <v8 has been dropped.
+
 ## [2.2.0] - 2018-01-22
+Note: this version was unpublished from the NPM registry because it
+broke AOT compilation when not using a factory to pass in a
+configuration object, which would have been the case for 100%
+of usages prior to this version.
+
 ### Added
 - Support some configuration of the messageformat instance that's
   created by the compiler on instantiation. Passing an object with
