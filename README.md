@@ -22,10 +22,12 @@ yarn add ngx-translate-messageformat-compiler messageformat
 
 ## Setup
 
-**Changed dependencies for v3:** You need to use Angular v4+ and ngx-translate v8+ for this version.
+**Changed dependencies for v3:** 
+You need to use Angular v4+ and ngx-translate v8+ for this version.
+See CHANGELOG for more details.
 
-  * See CHANGELOG for more details.
-**Changed setup for v2:** You no longer need to provide a MessageFormat instance.
+**Changed setup for v2:** 
+You no longer need to provide a MessageFormat instance.
 The compiler will do this. You still need to have `messageformat` installed, of course.
 See CHANGELOG for more details.
 
@@ -55,6 +57,7 @@ export class AppModule {}
 ```
 
 MessageFormat instances provide some methods to influence its behaviour, among them `setBiDiSupport`, `setIntlSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat.js/doc/MessageFormat.html
+
 You can override the values used when configuring MessageFormat by providing a configuration object for the `MESSAGE_FORMAT_CONFIG` injection token. Here's the default:
 ```ts
 {
