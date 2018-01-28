@@ -1,11 +1,6 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
-  ],
+  "rulesDirectory": [],
   "rules": {
-    "no-access-missing-member": true,
-    "invoke-injectable": true,
-
     "member-access": true,
     "member-ordering": [
       true, {
@@ -67,7 +62,6 @@
     "no-var-keyword": true,
     "radix": true,
     "triple-equals": true,
-    "typeof-compare": true,
     "use-isnan": true,
 
     "cyclomatic-complexity": true,
