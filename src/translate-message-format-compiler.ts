@@ -8,7 +8,7 @@ import { defaultConfig, MESSAGE_FORMAT_CONFIG, MessageFormatConfig } from './mes
  * This compiler expects ICU syntax and compiles the expressions with messageformat.js
  */
 export class TranslateMessageFormatCompiler extends TranslateCompiler {
-  private messageFormat: MessageFormat;
+  private messageFormat: { compile(value: any, lang: string): any; };
 
   constructor(@Optional() @Inject(MESSAGE_FORMAT_CONFIG) config?: MessageFormatConfig) {
     super();

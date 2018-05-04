@@ -1,8 +1,8 @@
-declare interface MessageFormatStatic {
+interface MessageFormatStatic {
   new(): MessageFormat;
 }
 
-declare interface MessageFormat {
+interface MessageFormat {
   compile(value: any, lang: string): any;
   setBiDiSupport(enable: boolean): MessageFormat;
   setIntlSupport(enable: boolean): MessageFormat;
