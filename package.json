@@ -40,9 +40,9 @@
     "messageformat": "^1.0.0"
   },
   "devDependencies": {
-    "@angular/compiler": "^5.0.0",
-    "@angular/compiler-cli": "^5.0.0",
-    "@angular/core": "^5.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/core": "^4.0.0",
     "@ngx-translate/core": "^9.0.0",
     "@types/jasmine": "2.5.51",
     "jasmine-core": "^2.8.0",
