@@ -1,6 +1,6 @@
 import { Inject, Optional } from "@angular/core";
 import { TranslateCompiler } from "@ngx-translate/core";
-import * as MessageFormatStatic from "messageformat";
+import * as MessageFormat from "messageformat";
 
 import {
   defaultConfig,
@@ -12,7 +12,7 @@ import {
  * This compiler expects ICU syntax and compiles the expressions with messageformat.js
  */
 export class TranslateMessageFormatCompiler extends TranslateCompiler {
-  private messageFormat: { compile(value: any, lang: string): any };
+  private messageFormat: MessageFormat;
 
   constructor(
     @Optional()
@@ -23,13 +23,12 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
 
     config = { ...defaultConfig, ...config };
 
-    this.messageFormat = new MessageFormatStatic()
+    this.messageFormat = new MessageFormat()
       .setBiDiSupport(config.biDiSupport)
-      .setIntlSupport(config.intlSupport)
       .setStrictNumberSign(config.strictNumberSign);
   }
 
-  public compile(value: string, lang: string): () => any {
+  public compile(value: string, lang: string): (params: any) => string {
     return this.messageFormat.compile(value, lang);
   }
 

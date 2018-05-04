@@ -30,11 +30,6 @@ describe("TranslateMessageFormatCompiler", () => {
         1490
       ]);
 
-      // IntlSupport: false
-      expect(() =>
-        compiler.compile("Unix time started on {T, date, full}", "en")
-      ).toThrowError('Formatting function "date" not found!');
-
       // StrictNumberSign
       const pastryMsg = [
         "{X, plural,",
@@ -94,18 +89,6 @@ describe("TranslateMessageFormatCompiler", () => {
         32,
         1490
       ]);
-    });
-
-    it("should respect passed-in intlSupport value", () => {
-      compiler = new TranslateMessageFormatCompiler({ intlSupport: true });
-      expect(
-        compiler.compile("Unix time started on {T, date, full}", "en")({ T: 0 })
-      ).toBe("Unix time started on Thursday, January 1, 1970");
-
-      compiler = new TranslateMessageFormatCompiler({ intlSupport: false });
-      expect(() =>
-        compiler.compile("Unix time started on {T, date, full}", "en")
-      ).toThrowError('Formatting function "date" not found!');
     });
 
     it("should respect passed-in strictNumberSign value", () => {

@@ -56,25 +56,24 @@ import { AppComponent } from "./app";
 export class AppModule {}
 ```
 
-MessageFormat instances provide some methods to influence its behaviour, among them `setBiDiSupport`, `setIntlSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat.js/doc/MessageFormat.html
+MessageFormat instances provide some methods to influence its behaviour, among them `setBiDiSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
 
 You can override the values used when configuring MessageFormat by providing a configuration object for the `MESSAGE_FORMAT_CONFIG` injection token. Here's the default:
 ```ts
 {
   biDiSupport: false,
-  intlSupport: false,
   strictNumberSign: false
 }
 ```
 
-This is how you would enable Intl support, for example:
+This is how you would enable bi-directional support, for example:
 ```ts
 import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 
 @NgModule({
   // ...
   providers: [
-    { provide: MESSAGE_FORMAT_CONFIG, useValue: { intlSupport: true }}
+    { provide: MESSAGE_FORMAT_CONFIG, useValue: { biDiSupport: true }}
   ]
 
 })
@@ -85,7 +84,7 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 
 This library implements neither the syntax used for pluralization (et al) nor the "mechanics" for making translations work in your Angular app. The former is _MessageFormat_, the latter _ngx-translate_. Before you assume your problem is with _ngx-translate-messageformat-compiler_, please consult these ressources:
 
-- Get help on the message syntax for your translation strings: https://messageformat.github.io/guide/
+- Get help on the message syntax for your translation strings: https://messageformat.github.io/messageformat/page-guide
 - Get help on using ngx-translate (loading translations, using HTML tags in your strings, translate pipe vs. directive, etc.): https://github.com/ngx-translate/core
 
 Here's two important differences to _ngx-translate_'s default syntax when using *MessageFormat*:
