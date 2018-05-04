@@ -1,6 +1,8 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken } from "@angular/core";
 
-export const MESSAGE_FORMAT_CONFIG = new InjectionToken<MessageFormatConfig>('MESSAGE_FORMAT_CONFIG');
+export const MESSAGE_FORMAT_CONFIG = new InjectionToken<MessageFormatConfig>(
+  "MESSAGE_FORMAT_CONFIG"
+);
 
 export interface MessageFormatConfig {
   biDiSupport?: boolean;

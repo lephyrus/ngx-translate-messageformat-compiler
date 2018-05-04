@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ngx-translate-messageformat-compiler",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0-rc.2",
   "description": "Compiler for ngx-translate that uses messageformat.js to compile translations using ICU syntax for handling pluralization and gender",
   "ngPackage": {
     "lib": {
@@ -61,6 +61,7 @@
     "karma-webpack": "^3.0.0",
     "messageformat": "^1.0.2",
     "ng-packagr": "^2.4.2",
+    "prettier": "^1.12.1",
     "reflect-metadata": "^0.1.10",
     "rimraf": "^2.6.2",
     "rxjs": "^6.1.0",
@@ -68,6 +69,7 @@
     "tsickle": "^0.27.5",
     "tslib": "^1.9.0",
     "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.12.0",
     "tslint-loader": "^3.5.3",
     "typescript": "~2.7.0",
     "webpack": "^4.6.0",

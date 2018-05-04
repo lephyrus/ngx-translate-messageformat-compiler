@@ -1,5 +1,5 @@
 interface MessageFormatStatic {
-  new(): MessageFormat;
+  new (): MessageFormat;
 }
 
 interface MessageFormat {
@@ -9,7 +9,7 @@ interface MessageFormat {
   setStrictNumberSign(enable: boolean): MessageFormat;
 }
 
-declare module 'messageformat' {
+declare module "messageformat" {
   const mf: MessageFormatStatic;
   export = mf;
 }
