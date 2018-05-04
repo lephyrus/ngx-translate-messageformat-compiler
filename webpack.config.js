@@ -43,5 +43,7 @@ module.exports = {
         }
       }
     })
-  ]
+  ],
+
+  mode: 'production'
 };
