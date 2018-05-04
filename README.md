@@ -22,8 +22,13 @@ yarn add ngx-translate-messageformat-compiler messageformat
 
 ## Setup
 
+**Changed dependencies for v4:** 
+You need to use Angular v6 and ngx-translate v10 for this version. 
+`Intl` is expected to be present by the new messageformat version so the corresponding config option has been dropped.
+See CHANGELOG for more details.
+
 **Changed dependencies for v3:** 
-You need to use Angular v4+ and ngx-translate v8+ for this version.
+You need to use Angular v4/v5 and ngx-translate v8/v9 for this version.
 See CHANGELOG for more details.
 
 **Changed setup for v2:** 

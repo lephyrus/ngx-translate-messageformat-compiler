@@ -4,16 +4,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2018-05-04
+### Added
+- Support for @ngrx-translate/core v10
+- Support for messageformat v2
+- Support for Angular v6
+
+### Removed
+- Dropped support for @ngrx-translate/core v8 and v9
+- Dropped support for messageformat v1
+- Dropped support for `intlSupport` config option (because
+  messageformat now always expects `Intl` to exist)
+- Dropped support for Angular v3 and v4
+
 ## [3.0.1] - 2018-05-04
-
 ### Fixed
-
 - Compiling the library with Angular v4 instead of Angular v5
   ensures the generated metadata is usable for AOT compilation
   in both Angular v4 and Angular v5 projects. (#23)
 
 ## [3.0.0] - 2018-01-28
-
 ### Changed
 - The messageformat configuration object is now provided by using
 an injection token (MESSAGE_FORMAT_CONFIG) rather than by passing
@@ -21,13 +31,11 @@ the configuration to the compiler's constructor using a factory
 function.
 
 ### Fixed
-
 - Using the compiler without a configuration object for
 messageformat remains unchanged and continues working as
 before.
 
 ### Removed
-
 - The use of InjectionToken requires at least Angular 4, so support
 for Angular v2 and ngx-translate <v8 has been dropped.
 
