@@ -5,9 +5,9 @@ npm-debug.log
 !/types/**/*.d.ts
 *.metadata.json
 src/*.js
-/index.js
 
-coverage
-bundles
+dist
+/*.tgz
 
+*.log
 **/.DS_Store

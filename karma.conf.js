@@ -1,19 +1,36 @@
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test-config.js');
-
   var configuration = {
     basePath: '',
     frameworks: ['jasmine'],
     exclude: [],
     files: [ { pattern: './specs-bundle.js', watched: false } ],
     preprocessors: { './specs-bundle.js': ['webpack'] },
-    webpack: testWebpackConfig,
+    webpack: {
+      resolve: {
+        extensions: ['.ts', '.js'],
+        modules: ['./src', 'node_modules']
+      },
+      module: {
+        rules: [{
+          enforce: 'pre',
+          test: /\.ts$/,
+          loader: 'tslint-loader',
+          exclude: ['./node_modules']
+        }, {
+          test: /\.ts$/,
+          loader: 'ts-loader'
+        }]
+      },
+
+      // disable warnings about bundle size for tests
+      performance: { hints: false }
+    },
     webpackMiddleware: { stats: 'errors-only'},
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
     singleRun: true
   };
 
