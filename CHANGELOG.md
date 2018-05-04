@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2018-05-04
+
+### Fixed
+
+- Compiling the library with Angular v4 instead of Angular v5
+  ensures the generated metadata is usable for AOT compilation
+  in both Angular v4 and Angular v5 projects. (#23)
+
 ## [3.0.0] - 2018-01-28
 
 ### Changed
