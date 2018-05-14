@@ -97,6 +97,10 @@ Here's two important differences to _ngx-translate_'s default syntax when using 
 - You lose the ability to access object properties in your placeholders: `'Hello {name.first} {name.last}'` won't work.
 - Simple placeholders are enclosed in single curly braces instead of double curly braces: `Hello {name}`
 
+This library also exports `TranslateMessageFormatDebugCompiler`, which you can use as a drop-in replacement for the regular `TranslateMessageFormatCompiler`.
+The debug compiler will log to the console whenever a translation string is compiled to an interpolation function, and whenever such a function is called (with interpolation parameters) to compute the final translated string.
+The logs may help you figuring out which translation produces an error and the timing of when the individual steps happen.
+
 Here's an example to get you started:
  
 ### Example
