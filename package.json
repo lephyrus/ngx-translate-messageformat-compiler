@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ngx-translate-messageformat-compiler",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "Compiler for ngx-translate that uses messageformat.js to compile translations using ICU syntax for handling pluralization and gender",
   "ngPackage": {
     "lib": {
@@ -16,7 +16,9 @@
     "clean": "rimraf dist dist.tgz src/**/*.d.ts src/**/*.metadata.json src/**/*.js",
     "test": "karma start",
     "test-watch": "karma start --singleRun=false --autoWatch=true",
-    "build": "ng-packagr -p tsconfig.json"
+    "build": "ng-packagr -p tsconfig.json",
+    "prepare": "yarn run build",
+    "publish": "npm publish dist"
   },
   "repository": {
     "type": "git",

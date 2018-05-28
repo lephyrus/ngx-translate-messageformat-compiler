@@ -4,9 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [4.1.2] - 2018-05-28
+### Fixed
+- 4.1.1 was missing README in published package
+
 ## [4.1.1] - 2018-05-14
 ### Fixed
-- 4.0.0 was incorrectly published :-/
+- 4.1.0 was incorrectly published :-/
 
 ## [4.1.0] - 2018-05-14
 ### Added
