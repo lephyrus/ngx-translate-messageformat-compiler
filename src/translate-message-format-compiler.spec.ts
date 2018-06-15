@@ -1,7 +1,7 @@
 import { TranslateMessageFormatCompiler } from "./translate-message-format-compiler";
 
 describe("TranslateMessageFormatCompiler", () => {
-  const toCharCodes = (value: String) =>
+  const toCharCodes = (value: string) =>
     Array.from(value).map(char => char.charCodeAt(0));
 
   let compiler: TranslateMessageFormatCompiler;
@@ -11,7 +11,7 @@ describe("TranslateMessageFormatCompiler", () => {
       compiler = new TranslateMessageFormatCompiler();
 
       // BiDiSupport: false
-      const result = compiler.compile("{0} >> {1} >> {2}", "en")([
+      const result = compiler.compile("{0} >> {1} >> {2}", "en-US")([
         "a",
         "\u05d1",
         "\u05d2"
@@ -128,7 +128,7 @@ describe("TranslateMessageFormatCompiler", () => {
   });
 
   describe("compileTranslations", () => {
-    let translations: Object;
+    let translations: object;
 
     beforeEach(() => {
       compiler = new TranslateMessageFormatCompiler();
@@ -148,6 +148,13 @@ describe("TranslateMessageFormatCompiler", () => {
       expect(result.alpha.two({ gender: "female", how: "cool" })).toBe(
         "She is cool"
       );
+    });
+
+    it("should return a corresponding object of compilation functions (other languages) ", () => {
+      compiler = new TranslateMessageFormatCompiler({languages:["en-US"]});
+      const obj = { month: "{month} Month{month, plural, one{} other{s}}" };
+      const result = compiler.compileTranslations(obj, "en-US");
+      expect(result.month({ month: 3 })).toBe("3 Months");
     });
   });
 });
