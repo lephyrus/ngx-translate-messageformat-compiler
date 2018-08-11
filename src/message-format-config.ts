@@ -6,10 +6,12 @@ export const MESSAGE_FORMAT_CONFIG = new InjectionToken<MessageFormatConfig>(
 
 export interface MessageFormatConfig {
   biDiSupport?: boolean;
+  locales?: string | string[];
   strictNumberSign?: boolean;
 }
 
 export const defaultConfig: MessageFormatConfig = {
   biDiSupport: false,
+  locales: undefined,
   strictNumberSign: false
 };

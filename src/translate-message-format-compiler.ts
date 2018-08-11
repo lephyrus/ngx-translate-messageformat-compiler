@@ -23,7 +23,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
 
     config = { ...defaultConfig, ...config };
 
-    this.messageFormat = new MessageFormat()
+    this.messageFormat = new MessageFormat(config.locales)
       .setBiDiSupport(config.biDiSupport)
       .setStrictNumberSign(config.strictNumberSign);
   }

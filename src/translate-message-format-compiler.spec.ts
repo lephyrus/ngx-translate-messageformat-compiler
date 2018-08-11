@@ -1,7 +1,7 @@
 import { TranslateMessageFormatCompiler } from "./translate-message-format-compiler";
 
 describe("TranslateMessageFormatCompiler", () => {
-  const toCharCodes = (value: String) =>
+  const toCharCodes = (value: string) =>
     Array.from(value).map(char => char.charCodeAt(0));
 
   let compiler: TranslateMessageFormatCompiler;
@@ -11,7 +11,7 @@ describe("TranslateMessageFormatCompiler", () => {
       compiler = new TranslateMessageFormatCompiler();
 
       // BiDiSupport: false
-      const result = compiler.compile("{0} >> {1} >> {2}", "en")([
+      const result = compiler.compile("{0} >> {1} >> {2}", "en-US")([
         "a",
         "\u05d1",
         "\u05d2"
@@ -110,28 +110,95 @@ describe("TranslateMessageFormatCompiler", () => {
         "3 pies"
       );
     });
+
+    it("should respect passed-in locales", () => {
+      const msg = "{s}";
+
+      // all locales
+      compiler = new TranslateMessageFormatCompiler();
+      expect(compiler.compile(msg, "en")({ s: "en" })).toBe("en");
+      expect(compiler.compileTranslations({ msg }, "fi").msg({ s: "fi" })).toBe(
+        "fi"
+      );
+      expect(compiler.compile(msg, "de-CH")({ s: "de-CH" })).toBe("de-CH");
+      expect(
+        compiler.compileTranslations({ msg }, "en-UK").msg({ s: "en-GB" })
+      ).toBe("en-GB");
+
+      // one locale
+      compiler = new TranslateMessageFormatCompiler({ locales: "es" });
+      expect(compiler.compile(msg, "es")({ s: "es" })).toBe("es");
+      expect(compiler.compileTranslations({ msg }, "es").msg({ s: "es" })).toBe(
+        "es"
+      );
+      expect(() => compiler.compile(msg, "en")({ s: "en" })).toThrowError();
+      expect(() =>
+        compiler.compileTranslations({ msg }, "en").msg({ s: "en" })
+      ).toThrowError();
+
+      // multiple locales
+      compiler = new TranslateMessageFormatCompiler({
+        locales: ["fr-LU", "it"]
+      });
+      expect(compiler.compile(msg, "fr-LU")({ s: "fr-LU" })).toBe("fr-LU");
+      expect(compiler.compileTranslations({ msg }, "it").msg({ s: "it" })).toBe(
+        "it"
+      );
+      expect(() => compiler.compile(msg, "en")({ s: "en" })).toThrowError();
+      expect(() =>
+        compiler.compileTranslations(msg, "en").msg({ s: "en" })
+      ).toThrowError();
+    });
   });
 
   describe("compile", () => {
     let icuString: string;
 
     beforeEach(() => {
-      compiler = new TranslateMessageFormatCompiler();
       icuString =
         "{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}";
     });
 
-    it("should return the compilation function", () => {
-      const result = compiler.compile(icuString, "en");
-      expect(result({ count: 1 })).toBe("A word");
+    describe("with all locales initialized", () => {
+      beforeEach(() => {
+        compiler = new TranslateMessageFormatCompiler();
+      });
+
+      it("should return the compilation function for simple locales", () => {
+        const result = compiler.compile(icuString, "en");
+        expect(result({ count: 1 })).toBe("A word");
+      });
+
+      xit("should return the compilation function for composed locales", () => {
+        // fails, see https://github.com/lephyrus/ngx-translate-messageformat-compiler/pull/29#issuecomment-410052125
+        const result = compiler.compile(icuString, "en-GB");
+        expect(result({ count: 1 })).toBe("A word");
+      });
+    });
+
+    describe("with specific locales initialized", () => {
+      beforeEach(() => {
+        compiler = new TranslateMessageFormatCompiler({
+          locales: ["en", "en-GB"]
+        });
+      });
+
+      it("should return the compilation function for simple locales", () => {
+        const result = compiler.compile(icuString, "en");
+        expect(result({ count: 1 })).toBe("A word");
+      });
+
+      it("should return the compilation function for composed locales", () => {
+        const result = compiler.compile(icuString, "en-GB");
+        expect(result({ count: 1 })).toBe("A word");
+      });
     });
   });
 
   describe("compileTranslations", () => {
-    let translations: Object;
+    let translations: object;
 
     beforeEach(() => {
-      compiler = new TranslateMessageFormatCompiler();
       translations = {
         alpha: {
           one:
@@ -142,12 +209,51 @@ describe("TranslateMessageFormatCompiler", () => {
       };
     });
 
-    it("should return a corresponding object of compilation functions", () => {
-      const result = compiler.compileTranslations(translations, "en");
-      expect(result.alpha.one({ count: 1 })).toBe("A word");
-      expect(result.alpha.two({ gender: "female", how: "cool" })).toBe(
-        "She is cool"
-      );
+    describe("with all locales initialized", () => {
+      beforeEach(() => {
+        compiler = new TranslateMessageFormatCompiler();
+      });
+
+      it("should return a corresponding object of compilation functions for simple locales", () => {
+        const result = compiler.compileTranslations(translations, "en");
+        expect(result.alpha.one({ count: 1 })).toBe("A word");
+        expect(result.alpha.two({ gender: "female", how: "cool" })).toBe(
+          "She is cool"
+        );
+      });
+
+      xit("should return a corresponding object of compilation functions for composed locales", () => {
+        // fails, see https://github.com/lephyrus/ngx-translate-messageformat-compiler/pull/29#issuecomment-410052125
+        const result = compiler.compileTranslations(translations, "en-GB");
+        expect(result.alpha.one({ count: 1 })).toBe("A word");
+        expect(result.alpha.two({ gender: "female", how: "cool" })).toBe(
+          "She is cool"
+        );
+      });
+    });
+
+    describe("with specific locales initialized", () => {
+      beforeEach(() => {
+        compiler = new TranslateMessageFormatCompiler({
+          locales: ["en", "en-GB"]
+        });
+      });
+
+      it("should return a corresponding object of compilation functions for simple locales", () => {
+        const result = compiler.compileTranslations(translations, "en");
+        expect(result.alpha.one({ count: 1 })).toBe("A word");
+        expect(result.alpha.two({ gender: "female", how: "cool" })).toBe(
+          "She is cool"
+        );
+      });
+
+      it("should return a corresponding object of compilation functions for composed locales", () => {
+        const result = compiler.compileTranslations(translations, "en-GB");
+        expect(result.alpha.one({ count: 1 })).toBe("A word");
+        expect(result.alpha.two({ gender: "female", how: "cool" })).toBe(
+          "She is cool"
+        );
+      });
     });
   });
 });
