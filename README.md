@@ -36,6 +36,8 @@ You no longer need to provide a MessageFormat instance.
 The compiler will do this. You still need to have `messageformat` installed, of course.
 See CHANGELOG for more details.
 
+### Integration with ngx-translate
+
 You need to configure `TranslateModule` so it uses `TranslateMessageFormatCompiler` as the compiler:
 
 ```ts
@@ -61,15 +63,38 @@ import { AppComponent } from "./app";
 export class AppModule {}
 ```
 
-MessageFormat instances provide some methods to influence its behaviour, among them `setBiDiSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
-
 You can override the values used when configuring MessageFormat by providing a configuration object for the `MESSAGE_FORMAT_CONFIG` injection token. Here's the default:
 ```ts
 {
   biDiSupport: false,
+  locales: undefined,
   strictNumberSign: false
 }
 ```
+
+### Locale initialization
+
+By default, messageformat initializes *all* locales. It is recommended that you indicate which locales you will need, like this:
+
+```ts
+import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
+
+@NgModule({
+  // ...
+  providers: [
+    { provide: MESSAGE_FORMAT_CONFIG, useValue: { locales: ['ar', 'fr'] }}
+  ]
+
+})
+```
+
+The value for `locales` is either a string or an array of strings. More info here: https://messageformat.github.io/messageformat/MessageFormat
+
+**Important** There is currently an issue in messageformat which means that you *have to* initialize your locales if you want to use "composed" locale codes, such as `de-CH`, `fr-CA`, `en-GB` and so on.
+
+### Advanced configuration
+
+MessageFormat instances provide some methods to influence its behaviour, among them `setBiDiSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
 
 This is how you would enable bi-directional support, for example:
 ```ts
@@ -82,7 +107,6 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
   ]
 
 })
-}
 ```
 
 ## Usage
