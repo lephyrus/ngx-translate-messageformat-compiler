@@ -149,6 +149,31 @@ describe("TranslateMessageFormatCompiler", () => {
         compiler.compileTranslations(msg, "en").msg({ s: "en" })
       ).toThrowError();
     });
+
+    it("should respect passed-in formatters", () => {
+      const formatters = {
+        upcase: (v: string) => v.toUpperCase(),
+        locale: (v: any, lc: string) => lc,
+        prop: (v: { [key: string]: any }, lc: any, p: string) => v[p]
+      };
+      const messages = {
+        describe: "This is {VAR, upcase}.",
+        locale: "The current locale is {_, locale}.",
+        answer: "Answer: {obj, prop, a}"
+      };
+
+      compiler = new TranslateMessageFormatCompiler({ formatters });
+
+      expect(compiler.compile(messages.describe, "en-GB")({ VAR: "big" })).toBe(
+        "This is BIG."
+      );
+      expect(compiler.compile(messages.locale, "en-GB")({})).toBe(
+        "The current locale is en-GB."
+      );
+      expect(
+        compiler.compile(messages.answer, "en-GB")({ obj: { q: 3, a: 42 } })
+      ).toBe("Answer: 42");
+    });
   });
 
   describe("compile", () => {

@@ -94,19 +94,21 @@ The value for `locales` is either a string or an array of strings. More info her
 
 ### Advanced configuration
 
-MessageFormat instances provide some methods to influence its behaviour, among them `setBiDiSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
+MessageFormat instances provide some methods to influence its behaviour, among them `addFormatters`, `setBiDiSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
 
-This is how you would enable bi-directional support, for example:
+This is how you would enable bi-directional support and add a custom formatter, for example:
 ```ts
 import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 
 @NgModule({
   // ...
-  providers: [
-    { provide: MESSAGE_FORMAT_CONFIG, useValue: { biDiSupport: true }}
-  ]
-
-})
+  providers: [{
+    provide: MESSAGE_FORMAT_CONFIG,
+    useValue: {
+      biDiSupport: true,
+      formatters: { upcase: v => v.toUpperCase() }
+    }
+  }]
 ```
 
 ## Usage
