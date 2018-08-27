@@ -67,6 +67,7 @@ You can override the values used when configuring MessageFormat by providing a c
 ```ts
 {
   biDiSupport: false,
+  formatters: undefined,
   locales: undefined,
   strictNumberSign: false
 }
