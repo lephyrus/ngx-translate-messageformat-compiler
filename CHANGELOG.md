@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [4.3.0] - 2018-08-27
+### Added
+- Option to use MessageFormat with custom formatters (#31)
+### Fixed
+- Script to (somewhat) automate publishing and avoid the frequent mistakes
+
 ## [4.2.0] - 2018-08-11
 ### Added
 - Option to initialize MessageFormat with the required locales (recommended)
