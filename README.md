@@ -2,6 +2,10 @@
 
 > Compiler for ngx-translate that uses messageformat.js to compile translations using ICU syntax for handling pluralization and gender
 
+**[Example App](https://stackblitz.com/edit/ngx-translate-messageformat-compiler-example)** (StackBlitz)
+
+## Table of Contents
+
 * [Installation](#installation)
 * [Setup](#setup)
 * [Usage](#usage)
