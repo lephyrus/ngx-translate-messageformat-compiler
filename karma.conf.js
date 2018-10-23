@@ -11,15 +11,12 @@ module.exports = function(config) {
         modules: ['./src', 'node_modules']
       },
       module: {
-        rules: [{
-          enforce: 'pre',
-          test: /\.ts$/,
-          loader: 'tslint-loader',
-          exclude: ['./node_modules']
-        }, {
-          test: /\.ts$/,
-          loader: 'ts-loader'
-        }]
+        rules: [
+          {
+            test: /\.ts$/,
+            loader: "ts-loader"
+          }
+        ]
       },
 
       // disable warnings about bundle size for tests
