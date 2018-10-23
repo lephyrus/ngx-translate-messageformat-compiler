@@ -152,14 +152,14 @@ describe("TranslateMessageFormatCompiler", () => {
 
     it("should respect passed-in formatters", () => {
       const formatters = {
-        upcase: (v: string) => v.toUpperCase(),
         locale: (v: any, lc: string) => lc,
-        prop: (v: { [key: string]: any }, lc: any, p: string) => v[p]
+        prop: (v: { [key: string]: any }, lc: any, p: string) => v[p],
+        upcase: (v: string) => v.toUpperCase()
       };
       const messages = {
+        answer: "Answer: {obj, prop, a}",
         describe: "This is {VAR, upcase}.",
-        locale: "The current locale is {_, locale}.",
-        answer: "Answer: {obj, prop, a}"
+        locale: "The current locale is {_, locale}."
       };
 
       compiler = new TranslateMessageFormatCompiler({ formatters });
