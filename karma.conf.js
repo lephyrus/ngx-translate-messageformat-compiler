@@ -1,14 +1,14 @@
 module.exports = function(config) {
   var configuration = {
-    basePath: '',
-    frameworks: ['jasmine'],
+    basePath: "",
+    frameworks: ["jasmine"],
     exclude: [],
-    files: [ { pattern: './specs-bundle.js', watched: false } ],
-    preprocessors: { './specs-bundle.js': ['webpack'] },
+    files: [{ pattern: "./specs-bundle.js", watched: false }],
+    preprocessors: { "./specs-bundle.js": ["webpack"] },
     webpack: {
       resolve: {
-        extensions: ['.ts', '.js'],
-        modules: ['./src', 'node_modules']
+        extensions: [".ts", ".js"],
+        modules: ["./src", "node_modules"]
       },
       module: {
         rules: [
@@ -22,12 +22,12 @@ module.exports = function(config) {
       // disable warnings about bundle size for tests
       performance: { hints: false }
     },
-    webpackMiddleware: { stats: 'errors-only'},
+    webpackMiddleware: { stats: "errors-only" },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['ChromeHeadless'],
+    browsers: ["ChromeHeadless"],
     singleRun: true
   };
 
