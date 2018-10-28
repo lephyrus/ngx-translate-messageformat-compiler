@@ -16,10 +16,14 @@ const pack = async (dst, src) => {
 
 const publish = async package => {
   return new Promise((resolve, reject) => {
-    const npm = spawn("npm", ["publish", package], {
-      stdio: "inherit",
-      shell: true
-    });
+    const npm = spawn(
+      "npm",
+      ["publish", "--registry  https://registry.npmjs.org", package],
+      {
+        stdio: "inherit",
+        shell: true
+      }
+    );
     npm.on("exit", code => (code > 0 ? reject(code) : resolve(code)));
     npm.on("error", error => reject(error));
   });
