@@ -21,12 +21,22 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
   ) {
     super();
 
-    config = { ...defaultConfig, ...config };
+    const { locales, formatters, biDiSupport, strictNumberSign } = {
+      ...defaultConfig,
+      ...config
+    };
 
-    this.messageFormat = new MessageFormat(config.locales)
-      .addFormatters(config.formatters)
-      .setBiDiSupport(config.biDiSupport)
-      .setStrictNumberSign(config.strictNumberSign);
+    this.messageFormat = new MessageFormat(locales);
+
+    if (formatters) {
+      this.messageFormat.addFormatters(formatters);
+    }
+    if (biDiSupport) {
+      this.messageFormat.setBiDiSupport(biDiSupport);
+    }
+    if (strictNumberSign) {
+      this.messageFormat.setStrictNumberSign(strictNumberSign);
+    }
   }
 
   public compile(value: string, lang: string): (params: any) => string {

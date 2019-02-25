@@ -153,7 +153,7 @@ describe("TranslateMessageFormatCompiler", () => {
     it("should respect passed-in formatters", () => {
       const formatters = {
         locale: (v: any, lc: string) => lc,
-        prop: (v: { [key: string]: any }, lc: any, p: string) => v[p],
+        prop: (v: { [key: string]: string }, lc: any, p: any) => v[p],
         upcase: (v: string) => v.toUpperCase()
       };
       const messages = {
