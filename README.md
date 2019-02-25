@@ -28,16 +28,16 @@ Something to be aware of if you deploy to strict production environments: [Funda
 
 ## Setup
 
-**Changed dependencies for v4:** 
-You need to use Angular v6 and ngx-translate v10 for this version. 
+**Changed dependencies for v4:**
+You need to use Angular v6 and ngx-translate v10 for this version.
 `Intl` is expected to be present by the new messageformat version so the corresponding config option has been dropped.
 See CHANGELOG for more details.
 
-**Changed dependencies for v3:** 
+**Changed dependencies for v3:**
 You need to use Angular v4/v5 and ngx-translate v8/v9 for this version.
 See CHANGELOG for more details.
 
-**Changed setup for v2:** 
+**Changed setup for v2:**
 You no longer need to provide a MessageFormat instance.
 The compiler will do this. You still need to have `messageformat` installed, of course.
 See CHANGELOG for more details.
@@ -97,8 +97,6 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 
 The value for `locales` is either a string or an array of strings. More info here: https://messageformat.github.io/messageformat/MessageFormat
 
-**Important** There is currently an issue in messageformat which means that you *have to* initialize your locales if you want to use "composed" locale codes, such as `de-CH`, `fr-CA`, `en-GB` and so on.
-
 ### Advanced configuration
 
 MessageFormat instances provide some methods to influence its behaviour, among them `addFormatters`, `setBiDiSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
@@ -135,7 +133,7 @@ The debug compiler will log to the console whenever a translation string is comp
 The logs may help you figuring out which translation produces an error and the timing of when the individual steps happen.
 
 Here's an example to get you started:
- 
+
 ### Example
 
 #### Translation strings:

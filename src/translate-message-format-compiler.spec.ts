@@ -194,7 +194,7 @@ describe("TranslateMessageFormatCompiler", () => {
         expect(result({ count: 1 })).toBe("A word");
       });
 
-      xit("should return the compilation function for composed locales", () => {
+      it("should return the compilation function for composed locales", () => {
         // fails, see https://github.com/lephyrus/ngx-translate-messageformat-compiler/pull/29#issuecomment-410052125
         const result = compiler.compile(icuString, "en-GB");
         expect(result({ count: 1 })).toBe("A word");
