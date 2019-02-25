@@ -95,7 +95,7 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 })
 ```
 
-The value for `locales` is either a string or an array of strings. More info here: https://messageformat.github.io/messageformat/MessageFormat
+The value for `locales` is either a string or an array of strings. The first locale is used as the default locale by messageformat. More info here: https://messageformat.github.io/messageformat/MessageFormat
 
 ### Advanced configuration
 
