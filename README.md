@@ -151,12 +151,12 @@ Here's an example to get you started:
 <ul>
   <li translate [translateParams]="{ count: 0 }">things</li>
   <li translate [translateParams]="{ count: 1 }">things</li>
-  <li>{{'things' | translate:"{ count: 2 }"}}</li>
+  <li>{{'things' | translate:{ count: 2 } }}</li>
 </ul>
 <ul>
   <li translate [translateParams]="{ gender: 'female', how: 'influential' }">people</li>
   <li translate [translateParams]="{ gender: 'male', how: 'funny' }">people</li>
-  <li>{{'people' | translate:"{ how: 'affectionate' }"}}</li>
+  <li>{{'people' | translate:{ how: 'affectionate' } }}</li>
 </ul>
 ```
 
