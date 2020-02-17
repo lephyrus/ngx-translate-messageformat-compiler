@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+### Added
+- Support for Angular 9 (#53)
+### Removed
+- Dropped support for @ngrx-translate/core v8 and v9
+- Dropped support for angular < 9 (ivy)
+- Dropped support for ngx-translate/core < 12
+### Fixed
+- Bump versions of various dependencies
+- Add unreleased section to CHANGELOG.md as per https://keepachangelog.com/en/1.0.0/#effort
+- Build library using ivy (enables #53 fix)
+### Breaking changes
+- Projects using Angular < 9, ngx-translate/core < 12 should use ^4.0.0 versions.
+
+
 ## [4.5.0] - 2019-06-24
 ### Added
 - Support for Angular 8 (#46)

@@ -11,11 +11,10 @@ describe("TranslateMessageFormatCompiler", () => {
       compiler = new TranslateMessageFormatCompiler();
 
       // BiDiSupport: false
-      const result = compiler.compile("{0} >> {1} >> {2}", "en-US")([
-        "a",
-        "\u05d1",
-        "\u05d2"
-      ]);
+      const result = compiler.compile(
+        "{0} >> {1} >> {2}",
+        "en-US"
+      )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         97,
         32,
@@ -45,11 +44,10 @@ describe("TranslateMessageFormatCompiler", () => {
       let result: string;
 
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: true });
-      result = compiler.compile("{0} >> {1} >> {2}", "en")([
-        "a",
-        "\u05d1",
-        "\u05d2"
-      ]);
+      result = compiler.compile(
+        "{0} >> {1} >> {2}",
+        "en"
+      )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         8206,
         97,
@@ -71,11 +69,10 @@ describe("TranslateMessageFormatCompiler", () => {
       ]);
 
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: false });
-      result = compiler.compile("{0} >> {1} >> {2}", "en")([
-        "a",
-        "\u05d1",
-        "\u05d2"
-      ]);
+      result = compiler.compile(
+        "{0} >> {1} >> {2}",
+        "en"
+      )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         97,
         32,

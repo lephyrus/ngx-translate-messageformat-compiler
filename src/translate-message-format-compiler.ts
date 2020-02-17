@@ -1,4 +1,4 @@
-import { Inject, Optional } from "@angular/core";
+import { Inject, Injectable, Optional } from "@angular/core";
 import { TranslateCompiler } from "@ngx-translate/core";
 import * as MessageFormat from "messageformat";
 
@@ -11,6 +11,7 @@ import {
 /**
  * This compiler expects ICU syntax and compiles the expressions with messageformat.js
  */
+@Injectable()
 export class TranslateMessageFormatCompiler extends TranslateCompiler {
   private messageFormat: MessageFormat;
 
