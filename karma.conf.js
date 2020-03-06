@@ -1,35 +1,35 @@
-module.exports = function(config) {
-  var configuration = {
-    basePath: "",
-    frameworks: ["jasmine"],
-    exclude: [],
-    files: [{ pattern: "./specs-bundle.js", watched: false }],
-    preprocessors: { "./specs-bundle.js": ["webpack"] },
-    webpack: {
-      resolve: {
-        extensions: [".ts", ".js"],
-        modules: ["./src", "node_modules"]
-      },
-      module: {
-        rules: [
-          {
-            test: /\.ts$/,
-            loader: "ts-loader"
-          }
-        ]
-      },
+// Karma configuration file, see link for more information
+// https://karma-runner.github.io/1.0/config/configuration-file.html
 
-      // disable warnings about bundle size for tests
-      performance: { hints: false }
+module.exports = function(config) {
+  config.set({
+    basePath: "",
+    frameworks: ["jasmine", "@angular-devkit/build-angular"],
+    plugins: [
+      require("karma-jasmine"),
+      require("karma-chrome-launcher"),
+      require("karma-jasmine-html-reporter"),
+      require("karma-coverage-istanbul-reporter"),
+      require("@angular-devkit/build-angular/plugins/karma")
+    ],
+    client: {
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    webpackMiddleware: { stats: "errors-only" },
+    coverageIstanbulReporter: {
+      dir: require("path").join(
+        __dirname,
+        "../../coverage/ngx-translate-messageformat-compiler"
+      ),
+      reports: ["html", "lcovonly", "text-summary"],
+      fixWebpackSourcePaths: true
+    },
+    reporters: ["progress", "kjhtml"],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: false,
-    browsers: ["ChromeHeadless"],
-    singleRun: true
-  };
-
-  config.set(configuration);
+    autoWatch: true,
+    browsers: ["Chrome"],
+    singleRun: false,
+    restartOnFileChange: true
+  });
 };
