@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [4.6.0] - 2020-03-08
+### Added
+- Support for Angular 9 (#49, #53)
+- Support for ngx-translate 12 (#56)
+### Changed
+- Updated dependecy explanation in README
+- Added link to app test repos
+
 ## [4.5.0] - 2019-06-24
 ### Added
 - Support for Angular 8 (#46)

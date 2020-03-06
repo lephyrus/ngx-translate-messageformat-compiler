@@ -28,19 +28,10 @@ Something to be aware of if you deploy to strict production environments: [Funda
 
 ## Setup
 
-**Changed dependencies for v4:**
-You need to use Angular v6 and ngx-translate v10 for this version.
-`Intl` is expected to be present by the new messageformat version so the corresponding config option has been dropped.
-See CHANGELOG for more details.
+This library currently supports Angular versions 6, 7, 8 and 9 and ngx-translate versions 10, 11, and 12. Check the documentation of @ngx-translate/core to know which of its versions to use, depending on your Angular version.
 
-**Changed dependencies for v3:**
-You need to use Angular v4/v5 and ngx-translate v8/v9 for this version.
-See CHANGELOG for more details.
-
-**Changed setup for v2:**
-You no longer need to provide a MessageFormat instance.
-The compiler will do this. You still need to have `messageformat` installed, of course.
-See CHANGELOG for more details.
+There are test apps that I use to check compatibility (`ng build` and `ng build --prod`, mainly) here:
+https://github.com/lephyrus/messageformat-compiler-test-projects
 
 ### Integration with ngx-translate
 
