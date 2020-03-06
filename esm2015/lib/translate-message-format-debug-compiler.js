@@ -1,0 +1,39 @@
+import { __decorate, __rest } from "tslib";
+import { Injectable } from "@angular/core";
+import { TranslateMessageFormatCompiler } from "./translate-message-format-compiler";
+/* tslint:disable-next-line no-console */
+const log = (...message) => console.log(tag, ...message);
+const ɵ0 = log;
+const tag = "[TranslateMessageFormatCompiler]";
+let TranslateMessageFormatDebugCompiler = class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatCompiler {
+    compile(value, lang) {
+        log(`COMPILE (${lang})`, value);
+        const interpolationFn = super.compile(value, lang);
+        return this.wrap(interpolationFn, value);
+    }
+    compileTranslations(value, lang) {
+        log(`COMPILE (${lang})`, value);
+        const _a = super.compileTranslations(value, lang), { toString } = _a, interpolationFns = __rest(_a, ["toString"]);
+        return Object.assign({ toString }, this.wrapRecursively(interpolationFns, value));
+    }
+    wrap(fn, reference) {
+        return (params) => {
+            log("INTERPOLATE", reference, params);
+            return fn(params);
+        };
+    }
+    wrapRecursively(obj, referenceObj) {
+        return Object.keys(obj).reduce((acc, key) => {
+            const value = obj[key];
+            const referenceValue = referenceObj[key];
+            return typeof value === "function"
+                ? Object.assign(Object.assign({}, acc), { [key]: this.wrap(value, referenceValue) }) : Object.assign(Object.assign({}, acc), { [key]: this.wrapRecursively(value, referenceValue) });
+        }, {});
+    }
+};
+TranslateMessageFormatDebugCompiler = __decorate([
+    Injectable()
+], TranslateMessageFormatDebugCompiler);
+export { TranslateMessageFormatDebugCompiler };
+export { ɵ0 };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHJhbnNsYXRlLW1lc3NhZ2UtZm9ybWF0LWRlYnVnLWNvbXBpbGVyLmpzIiwic291cmNlUm9vdCI6Im5nOi8vbmd4LXRyYW5zbGF0ZS1tZXNzYWdlZm9ybWF0LWNvbXBpbGVyLyIsInNvdXJjZXMiOlsibGliL3RyYW5zbGF0ZS1tZXNzYWdlLWZvcm1hdC1kZWJ1Zy1jb21waWxlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsT0FBTyxFQUFFLFVBQVUsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUMzQyxPQUFPLEVBQUUsOEJBQThCLEVBQUUsTUFBTSxxQ0FBcUMsQ0FBQztBQUVyRix5Q0FBeUM7QUFDekMsTUFBTSxHQUFHLEdBQUcsQ0FBQyxHQUFHLE9BQWlCLEVBQUUsRUFBRSxDQUFDLE9BQU8sQ0FBQyxHQUFHLENBQUMsR0FBRyxFQUFFLEdBQUcsT0FBTyxDQUFDLENBQUM7O0FBQ25FLE1BQU0sR0FBRyxHQUFHLGtDQUFrQyxDQUFDO0FBRy9DLElBQWEsbUNBQW1DLEdBQWhELE1BQWEsbUNBQW9DLFNBQVEsOEJBQThCO0lBQzlFLE9BQU8sQ0FBQyxLQUFhLEVBQUUsSUFBWTtRQUN4QyxHQUFHLENBQUMsWUFBWSxJQUFJLEdBQUcsRUFBRSxLQUFLLENBQUMsQ0FBQztRQUNoQyxNQUFNLGVBQWUsR0FBRyxLQUFLLENBQUMsT0FBTyxDQUFDLEtBQUssRUFBRSxJQUFJLENBQUMsQ0FBQztRQUVuRCxPQUFPLElBQUksQ0FBQyxJQUFJLENBQUMsZUFBZSxFQUFFLEtBQUssQ0FBQyxDQUFDO0lBQzNDLENBQUM7SUFFTSxtQkFBbUIsQ0FBQyxLQUFVLEVBQUUsSUFBWTtRQUNqRCxHQUFHLENBQUMsWUFBWSxJQUFJLEdBQUcsRUFBRSxLQUFLLENBQUMsQ0FBQztRQUNoQyxNQUFNLDJDQUdMLEVBSEssRUFBRSxRQUFRLE9BR2YsRUFIaUIsMkNBR2pCLENBQUM7UUFFRix1QkFBUyxRQUFRLElBQUssSUFBSSxDQUFDLGVBQWUsQ0FBQyxnQkFBZ0IsRUFBRSxLQUFLLENBQUMsRUFBRztJQUN4RSxDQUFDO0lBRU8sSUFBSSxDQUNWLEVBQTJCLEVBQzNCLFNBQWlCO1FBRWpCLE9BQU8sQ0FBQyxNQUFXLEVBQUUsRUFBRTtZQUNyQixHQUFHLENBQUMsYUFBYSxFQUFFLFNBQVMsRUFBRSxNQUFNLENBQUMsQ0FBQztZQUN0QyxPQUFPLEVBQUUsQ0FBQyxNQUFNLENBQUMsQ0FBQztRQUNwQixDQUFDLENBQUM7SUFDSixDQUFDO0lBRU8sZUFBZSxDQUFDLEdBQVEsRUFBRSxZQUFpQjtRQUNqRCxPQUFPLE1BQU0sQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLENBQUMsTUFBTSxDQUFDLENBQUMsR0FBUSxFQUFFLEdBQVcsRUFBRSxFQUFFO1lBQ3ZELE1BQU0sS0FBSyxHQUFHLEdBQUcsQ0FBQyxHQUFHLENBQUMsQ0FBQztZQUN2QixNQUFNLGNBQWMsR0FBRyxZQUFZLENBQUMsR0FBRyxDQUFDLENBQUM7WUFFekMsT0FBTyxPQUFPLEtBQUssS0FBSyxVQUFVO2dCQUNoQyxDQUFDLGlDQUFNLEdBQUcsS0FBRSxDQUFDLEdBQUcsQ0FBQyxFQUFFLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxFQUFFLGNBQWMsQ0FBQyxJQUNuRCxDQUFDLGlDQUFNLEdBQUcsS0FBRSxDQUFDLEdBQUcsQ0FBQyxFQUFFLElBQUksQ0FBQyxlQUFlLENBQUMsS0FBSyxFQUFFLGNBQWMsQ0FBQyxHQUFFLENBQUM7UUFDckUsQ0FBQyxFQUFFLEVBQUUsQ0FBQyxDQUFDO0lBQ1QsQ0FBQztDQUNGLENBQUE7QUF0Q1ksbUNBQW1DO0lBRC9DLFVBQVUsRUFBRTtHQUNBLG1DQUFtQyxDQXNDL0M7U0F0Q1ksbUNBQW1DIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSW5qZWN0YWJsZSB9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XG5pbXBvcnQgeyBUcmFuc2xhdGVNZXNzYWdlRm9ybWF0Q29tcGlsZXIgfSBmcm9tIFwiLi90cmFuc2xhdGUtbWVzc2FnZS1mb3JtYXQtY29tcGlsZXJcIjtcblxuLyogdHNsaW50OmRpc2FibGUtbmV4dC1saW5lIG5vLWNvbnNvbGUgKi9cbmNvbnN0IGxvZyA9ICguLi5tZXNzYWdlOiBzdHJpbmdbXSkgPT4gY29uc29sZS5sb2codGFnLCAuLi5tZXNzYWdlKTtcbmNvbnN0IHRhZyA9IFwiW1RyYW5zbGF0ZU1lc3NhZ2VGb3JtYXRDb21waWxlcl1cIjtcblxuQEluamVjdGFibGUoKVxuZXhwb3J0IGNsYXNzIFRyYW5zbGF0ZU1lc3NhZ2VGb3JtYXREZWJ1Z0NvbXBpbGVyIGV4dGVuZHMgVHJhbnNsYXRlTWVzc2FnZUZvcm1hdENvbXBpbGVyIHtcbiAgcHVibGljIGNvbXBpbGUodmFsdWU6IHN0cmluZywgbGFuZzogc3RyaW5nKTogKHBhcmFtczogYW55KSA9PiBzdHJpbmcge1xuICAgIGxvZyhgQ09NUElMRSAoJHtsYW5nfSlgLCB2YWx1ZSk7XG4gICAgY29uc3QgaW50ZXJwb2xhdGlvbkZuID0gc3VwZXIuY29tcGlsZSh2YWx1ZSwgbGFuZyk7XG5cbiAgICByZXR1cm4gdGhpcy53cmFwKGludGVycG9sYXRpb25GbiwgdmFsdWUpO1xuICB9XG5cbiAgcHVibGljIGNvbXBpbGVUcmFuc2xhdGlvbnModmFsdWU6IGFueSwgbGFuZzogc3RyaW5nKTogYW55IHtcbiAgICBsb2coYENPTVBJTEUgKCR7bGFuZ30pYCwgdmFsdWUpO1xuICAgIGNvbnN0IHsgdG9TdHJpbmcsIC4uLmludGVycG9sYXRpb25GbnMgfSA9IHN1cGVyLmNvbXBpbGVUcmFuc2xhdGlvbnMoXG4gICAgICB2YWx1ZSxcbiAgICAgIGxhbmdcbiAgICApO1xuXG4gICAgcmV0dXJuIHsgdG9TdHJpbmcsIC4uLnRoaXMud3JhcFJlY3Vyc2l2ZWx5KGludGVycG9sYXRpb25GbnMsIHZhbHVlKSB9O1xuICB9XG5cbiAgcHJpdmF0ZSB3cmFwKFxuICAgIGZuOiAocGFyYW1zOiBhbnkpID0+IHN0cmluZyxcbiAgICByZWZlcmVuY2U6IHN0cmluZ1xuICApOiAocGFyYW1zOiBhbnkpID0+IHN0cmluZyB7XG4gICAgcmV0dXJuIChwYXJhbXM6IGFueSkgPT4ge1xuICAgICAgbG9nKFwiSU5URVJQT0xBVEVcIiwgcmVmZXJlbmNlLCBwYXJhbXMpO1xuICAgICAgcmV0dXJuIGZuKHBhcmFtcyk7XG4gICAgfTtcbiAgfVxuXG4gIHByaXZhdGUgd3JhcFJlY3Vyc2l2ZWx5KG9iajogYW55LCByZWZlcmVuY2VPYmo6IGFueSk6IGFueSB7XG4gICAgcmV0dXJuIE9iamVjdC5rZXlzKG9iaikucmVkdWNlKChhY2M6IGFueSwga2V5OiBzdHJpbmcpID0+IHtcbiAgICAgIGNvbnN0IHZhbHVlID0gb2JqW2tleV07XG4gICAgICBjb25zdCByZWZlcmVuY2VWYWx1ZSA9IHJlZmVyZW5jZU9ialtrZXldO1xuXG4gICAgICByZXR1cm4gdHlwZW9mIHZhbHVlID09PSBcImZ1bmN0aW9uXCJcbiAgICAgICAgPyB7IC4uLmFjYywgW2tleV06IHRoaXMud3JhcCh2YWx1ZSwgcmVmZXJlbmNlVmFsdWUpIH1cbiAgICAgICAgOiB7IC4uLmFjYywgW2tleV06IHRoaXMud3JhcFJlY3Vyc2l2ZWx5KHZhbHVlLCByZWZlcmVuY2VWYWx1ZSkgfTtcbiAgICB9LCB7fSk7XG4gIH1cbn1cbiJdfQ==
