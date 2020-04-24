@@ -21,7 +21,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
   ) {
     super();
 
-    const { locales, formatters, biDiSupport, strictNumberSign } = {
+    const { locales, formatters, biDiSupport, strictNumberSign, disablePluralKeyChecks } = {
       ...defaultConfig,
       ...config
     };
@@ -36,6 +36,9 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
     }
     if (strictNumberSign) {
       this.messageFormat.setStrictNumberSign(strictNumberSign);
+    }
+    if (disablePluralKeyChecks) {
+      this.messageFormat.disablePluralKeyChecks();
     }
   }
 
