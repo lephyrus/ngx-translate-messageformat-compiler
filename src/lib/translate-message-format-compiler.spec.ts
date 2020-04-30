@@ -11,11 +11,10 @@ describe("TranslateMessageFormatCompiler", () => {
       compiler = new TranslateMessageFormatCompiler();
 
       // BiDiSupport: false
-      const result = compiler.compile("{0} >> {1} >> {2}", "en-US")([
-        "a",
-        "\u05d1",
-        "\u05d2"
-      ]);
+      const result = compiler.compile(
+        "{0} >> {1} >> {2}",
+        "en-US"
+      )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         97,
         32,
@@ -45,11 +44,10 @@ describe("TranslateMessageFormatCompiler", () => {
       let result: string;
 
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: true });
-      result = compiler.compile("{0} >> {1} >> {2}", "en")([
-        "a",
-        "\u05d1",
-        "\u05d2"
-      ]);
+      result = compiler.compile(
+        "{0} >> {1} >> {2}",
+        "en"
+      )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         8206,
         97,
@@ -71,11 +69,10 @@ describe("TranslateMessageFormatCompiler", () => {
       ]);
 
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: false });
-      result = compiler.compile("{0} >> {1} >> {2}", "en")([
-        "a",
-        "\u05d1",
-        "\u05d2"
-      ]);
+      result = compiler.compile(
+        "{0} >> {1} >> {2}",
+        "en"
+      )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         97,
         32,
@@ -176,27 +173,32 @@ describe("TranslateMessageFormatCompiler", () => {
     });
 
     it("should respect disablePluralKeyChecks", () => {
-      const invalidPluralString = "{count, plural, =0 {No orders} one {# order} few {# orders} other {# orders}}";
+      const invalidPluralString =
+        "{count, plural, =0 {No orders} one {# order} few {# orders} other {# orders}}";
 
       compiler = new TranslateMessageFormatCompiler({});
       try {
-        compiler.compile(invalidPluralString, "en-GB")
-        fail('Should throw an exception');
+        compiler.compile(invalidPluralString, "en-GB");
+        fail("Should throw an exception");
       } catch (e) {
-        expect(e.message).toContain('Valid plural keys for this locale are');
+        expect(e.message).toContain("Valid plural keys for this locale are");
       }
 
-      compiler = new TranslateMessageFormatCompiler({ disablePluralKeyChecks: false });
+      compiler = new TranslateMessageFormatCompiler({
+        disablePluralKeyChecks: false
+      });
       try {
-        compiler.compile(invalidPluralString, "en-GB")
-        fail('Should throw an exception');
+        compiler.compile(invalidPluralString, "en-GB");
+        fail("Should throw an exception");
       } catch (e) {
-        expect(e.message).toContain('Valid plural keys for this locale are');
+        expect(e.message).toContain("Valid plural keys for this locale are");
       }
 
-      compiler = new TranslateMessageFormatCompiler({ disablePluralKeyChecks: true });
-      expect(compiler.compile(invalidPluralString, "en-GB")({count: 2})).toBe(
-          "2 orders"
+      compiler = new TranslateMessageFormatCompiler({
+        disablePluralKeyChecks: true
+      });
+      expect(compiler.compile(invalidPluralString, "en-GB")({ count: 2 })).toBe(
+        "2 orders"
       );
     });
   });

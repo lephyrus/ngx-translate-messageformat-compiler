@@ -21,7 +21,13 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
   ) {
     super();
 
-    const { locales, formatters, biDiSupport, strictNumberSign, disablePluralKeyChecks } = {
+    const {
+      locales,
+      formatters,
+      biDiSupport,
+      strictNumberSign,
+      disablePluralKeyChecks
+    } = {
       ...defaultConfig,
       ...config
     };
