@@ -174,6 +174,31 @@ describe("TranslateMessageFormatCompiler", () => {
         compiler.compile(messages.answer, "en-GB")({ obj: { q: 3, a: 42 } })
       ).toBe("Answer: 42");
     });
+
+    it("should respect disablePluralKeyChecks", () => {
+      const invalidPluralString = "{count, plural, =0 {No orders} one {# order} few {# orders} other {# orders}}";
+
+      compiler = new TranslateMessageFormatCompiler({});
+      try {
+        compiler.compile(invalidPluralString, "en-GB")
+        fail('Should throw an exception');
+      } catch (e) {
+        expect(e.message).toContain('Valid plural keys for this locale are');
+      }
+
+      compiler = new TranslateMessageFormatCompiler({ disablePluralKeyChecks: false });
+      try {
+        compiler.compile(invalidPluralString, "en-GB")
+        fail('Should throw an exception');
+      } catch (e) {
+        expect(e.message).toContain('Valid plural keys for this locale are');
+      }
+
+      compiler = new TranslateMessageFormatCompiler({ disablePluralKeyChecks: true });
+      expect(compiler.compile(invalidPluralString, "en-GB")({count: 2})).toBe(
+          "2 orders"
+      );
+    });
   });
 
   describe("compile", () => {

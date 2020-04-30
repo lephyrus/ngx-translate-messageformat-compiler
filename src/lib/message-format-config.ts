@@ -11,11 +11,13 @@ export interface MessageFormatConfig {
   };
   locales?: string | string[];
   strictNumberSign?: boolean;
+  disablePluralKeyChecks?: boolean;
 }
 
 export const defaultConfig: MessageFormatConfig = {
   biDiSupport: false,
   formatters: undefined,
   locales: undefined,
-  strictNumberSign: false
+  strictNumberSign: false,
+  disablePluralKeyChecks: false
 };
