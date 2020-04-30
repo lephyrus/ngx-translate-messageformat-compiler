@@ -64,6 +64,7 @@ You can override the values used when configuring MessageFormat by providing a c
 ```ts
 {
   biDiSupport: false,
+  disablePluralKeyChecks: false,
   formatters: undefined,
   locales: undefined,
   strictNumberSign: false
@@ -90,7 +91,7 @@ The value for `locales` is either a string or an array of strings. The first loc
 
 ### Advanced configuration
 
-MessageFormat instances provide some methods to influence its behaviour, among them `addFormatters`, `setBiDiSupport`, and `setStrictNumberSign`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
+MessageFormat instances provide some methods to influence its behaviour, among them `addFormatters`, `setBiDiSupport`, `setStrictNumberSign` and `disablePluralKeyChecks`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
 
 This is how you would enable bi-directional support and add a custom formatter, for example:
 ```ts
