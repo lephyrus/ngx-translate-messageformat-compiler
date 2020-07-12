@@ -28,7 +28,7 @@ Something to be aware of if you deploy to strict production environments: [Funda
 
 ## Setup
 
-This library currently supports Angular versions 6, 7, 8 and 9 and ngx-translate versions 10, 11, and 12. Check the documentation of @ngx-translate/core to know which of its versions to use, depending on your Angular version.
+This library currently supports Angular versions 6, 7, 8 9 and 10 and ngx-translate versions 10, 11, 12 and 13. Check the documentation of @ngx-translate/core to know which of its versions to use, depending on your Angular version.
 
 There are test apps that I use to check compatibility (`ng build` and `ng build --prod`, mainly) here:
 https://github.com/lephyrus/messageformat-compiler-test-projects

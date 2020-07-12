@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [4.8.0] - 2020-07-12
+### Added
+- Support for Angular v10 and ngx-translate v13 (#62)
+
 ## [4.7.0] - 2020-04-30
 ### Added
 - Option to disable plural key checks (#39)
