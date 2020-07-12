@@ -4,7 +4,7 @@ import * as MessageFormat from "messageformat";
 import {
   defaultConfig,
   MessageFormatConfig,
-  MESSAGE_FORMAT_CONFIG
+  MESSAGE_FORMAT_CONFIG,
 } from "./message-format-config";
 
 /**
@@ -26,10 +26,10 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
       formatters,
       biDiSupport,
       strictNumberSign,
-      disablePluralKeyChecks
+      disablePluralKeyChecks,
     } = {
       ...defaultConfig,
-      ...config
+      ...config,
     };
 
     this.messageFormat = new MessageFormat(locales);

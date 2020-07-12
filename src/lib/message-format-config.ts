@@ -19,5 +19,5 @@ export const defaultConfig: MessageFormatConfig = {
   formatters: undefined,
   locales: undefined,
   strictNumberSign: false,
-  disablePluralKeyChecks: false
+  disablePluralKeyChecks: false,
 };

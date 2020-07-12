@@ -2,7 +2,7 @@ import { TranslateMessageFormatCompiler } from "./translate-message-format-compi
 
 describe("TranslateMessageFormatCompiler", () => {
   const toCharCodes = (value: string) =>
-    Array.from(value).map(char => char.charCodeAt(0));
+    Array.from(value).map((char) => char.charCodeAt(0));
 
   let compiler: TranslateMessageFormatCompiler;
 
@@ -26,14 +26,14 @@ describe("TranslateMessageFormatCompiler", () => {
         62,
         62,
         32,
-        1490
+        1490,
       ]);
 
       // StrictNumberSign
       const pastryMsg = [
         "{X, plural,",
         "one{{P, select, cookie{a cookie} other{a pie}}}",
-        "other{{P, select, cookie{# cookies} other{# pies}}}}"
+        "other{{P, select, cookie{# cookies} other{# pies}}}}",
       ].join(" ");
       expect(compiler.compile(pastryMsg, "en")({ X: 3, P: "pie" })).toBe(
         "3 pies"
@@ -65,7 +65,7 @@ describe("TranslateMessageFormatCompiler", () => {
         32,
         8206,
         1490,
-        8206
+        8206,
       ]);
 
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: false });
@@ -84,7 +84,7 @@ describe("TranslateMessageFormatCompiler", () => {
         62,
         62,
         32,
-        1490
+        1490,
       ]);
     });
 
@@ -92,7 +92,7 @@ describe("TranslateMessageFormatCompiler", () => {
       const pastryMsg = [
         "{X, plural,",
         "one{{P, select, cookie{a cookie} other{a pie}}}",
-        "other{{P, select, cookie{# cookies} other{# pies}}}}"
+        "other{{P, select, cookie{# cookies} other{# pies}}}}",
       ].join(" ");
 
       compiler = new TranslateMessageFormatCompiler({ strictNumberSign: true });
@@ -101,7 +101,7 @@ describe("TranslateMessageFormatCompiler", () => {
       );
 
       compiler = new TranslateMessageFormatCompiler({
-        strictNumberSign: false
+        strictNumberSign: false,
       });
       expect(compiler.compile(pastryMsg, "en")({ X: 3, P: "pie" })).toBe(
         "3 pies"
@@ -135,7 +135,7 @@ describe("TranslateMessageFormatCompiler", () => {
 
       // multiple locales
       compiler = new TranslateMessageFormatCompiler({
-        locales: ["fr-LU", "it"]
+        locales: ["fr-LU", "it"],
       });
       expect(compiler.compile(msg, "fr-LU")({ s: "fr-LU" })).toBe("fr-LU");
       expect(compiler.compileTranslations({ msg }, "it").msg({ s: "it" })).toBe(
@@ -151,12 +151,12 @@ describe("TranslateMessageFormatCompiler", () => {
       const formatters = {
         locale: (v: any, lc: string) => lc,
         prop: (v: { [key: string]: string }, lc: any, p: any) => v[p],
-        upcase: (v: string) => v.toUpperCase()
+        upcase: (v: string) => v.toUpperCase(),
       };
       const messages = {
         answer: "Answer: {obj, prop, a}",
         describe: "This is {VAR, upcase}.",
-        locale: "The current locale is {_, locale}."
+        locale: "The current locale is {_, locale}.",
       };
 
       compiler = new TranslateMessageFormatCompiler({ formatters });
@@ -185,7 +185,7 @@ describe("TranslateMessageFormatCompiler", () => {
       }
 
       compiler = new TranslateMessageFormatCompiler({
-        disablePluralKeyChecks: false
+        disablePluralKeyChecks: false,
       });
       try {
         compiler.compile(invalidPluralString, "en-GB");
@@ -195,7 +195,7 @@ describe("TranslateMessageFormatCompiler", () => {
       }
 
       compiler = new TranslateMessageFormatCompiler({
-        disablePluralKeyChecks: true
+        disablePluralKeyChecks: true,
       });
       expect(compiler.compile(invalidPluralString, "en-GB")({ count: 2 })).toBe(
         "2 orders"
@@ -231,7 +231,7 @@ describe("TranslateMessageFormatCompiler", () => {
     describe("with specific locales initialized", () => {
       beforeEach(() => {
         compiler = new TranslateMessageFormatCompiler({
-          locales: ["en", "en-GB"]
+          locales: ["en", "en-GB"],
         });
       });
 
@@ -256,8 +256,8 @@ describe("TranslateMessageFormatCompiler", () => {
           one:
             "{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}",
           two:
-            "{gender, select, male{He is} female{She is} other{They are}} {how}"
-        }
+            "{gender, select, male{He is} female{She is} other{They are}} {how}",
+        },
       };
     });
 
@@ -287,7 +287,7 @@ describe("TranslateMessageFormatCompiler", () => {
     describe("with specific locales initialized", () => {
       beforeEach(() => {
         compiler = new TranslateMessageFormatCompiler({
-          locales: ["en", "en-GB"]
+          locales: ["en", "en-GB"],
         });
       });
 
