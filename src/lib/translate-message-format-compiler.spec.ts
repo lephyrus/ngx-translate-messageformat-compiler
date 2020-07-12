@@ -274,7 +274,7 @@ describe("TranslateMessageFormatCompiler", () => {
         );
       });
 
-      xit("should return a corresponding object of compilation functions for composed locales", () => {
+      it("should return a corresponding object of compilation functions for composed locales", () => {
         // fails, see https://github.com/lephyrus/ngx-translate-messageformat-compiler/pull/29#issuecomment-410052125
         const result = compiler.compileTranslations(translations, "en-GB");
         expect(result.alpha.one({ count: 1 })).toBe("A word");
