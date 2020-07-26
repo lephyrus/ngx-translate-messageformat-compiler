@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "test": "ng test",
+    "build:prod": "ng build --prod",
+    "test": "ng test --watch=false",
+    "test:watch": "ng test",
     "lint": "ng lint",
     "format": "prettier -l \"./src/**/*.ts\" \"./*.js\"",
     "e2e": "ng e2e"
