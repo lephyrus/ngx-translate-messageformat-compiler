@@ -1,0 +1,47 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      node-version: 12.x
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node ${{ env.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node-version }}
+      - id: find-yarn-cache-folder
+        name: Find Yarn's cache folder
+        run: echo "::set-output name=path::$(yarn config get cacheFolder)"
+      - name: Cache Yarn's cache folder
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.find-yarn-cache-folder.outputs.path }}
+          key: yarn-cache-folder-os-${{ runner.os }}-node-${{ env.node-version }}-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-cache-folder-os-${{ runner.os }}-node-${{ env.node-version }}-
+            yarn-cache-folder-os-${{ runner.os }}-
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Verify code formatting
+        run: yarn format
+      - name: Lint
+        run: yarn lint
+      - name: Test
+        run: yarn test
+      - name: Build for production
+        run: yarn build:prod
+      - name: Pack
+        run: cd dist && npm pack
+      - uses: actions/upload-artifact@v2
+        with:
+          name: npm-package
+          path: dist/*.tgz
