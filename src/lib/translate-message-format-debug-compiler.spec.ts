@@ -1,7 +1,7 @@
 import { TranslateMessageFormatCompiler } from "./translate-message-format-compiler";
 import { TranslateMessageFormatDebugCompiler } from "./translate-message-format-debug-compiler";
 
-/* tslint:disable:no-console */
+/* eslint-disable no-console */
 describe("TranslateMessageFormatDebugCompiler", () => {
   let compiler: TranslateMessageFormatCompiler;
 

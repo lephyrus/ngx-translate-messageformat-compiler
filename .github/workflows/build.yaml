@@ -31,8 +31,6 @@ jobs:
             yarn-cache-folder-os-${{ runner.os }}-
       - name: Install dependencies
         run: yarn install --immutable
-      - name: Verify code formatting
-        run: yarn format
       - name: Lint
         run: yarn lint
       - name: Test
