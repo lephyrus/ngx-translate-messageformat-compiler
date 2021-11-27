@@ -16,17 +16,7 @@ describe("TranslateMessageFormatCompiler", () => {
         "en-US"
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
-        97,
-        32,
-        62,
-        62,
-        32,
-        1489,
-        32,
-        62,
-        62,
-        32,
-        1490,
+        97, 32, 62, 62, 32, 1489, 32, 62, 62, 32, 1490,
       ]);
 
       // StrictNumberSign
@@ -49,23 +39,8 @@ describe("TranslateMessageFormatCompiler", () => {
         "en"
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
-        8206,
-        97,
-        8206,
-        32,
-        62,
-        62,
-        32,
-        8206,
-        1489,
-        8206,
-        32,
-        62,
-        62,
-        32,
-        8206,
-        1490,
-        8206,
+        8206, 97, 8206, 32, 62, 62, 32, 8206, 1489, 8206, 32, 62, 62, 32, 8206,
+        1490, 8206,
       ]);
 
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: false });
@@ -74,17 +49,7 @@ describe("TranslateMessageFormatCompiler", () => {
         "en"
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
-        97,
-        32,
-        62,
-        62,
-        32,
-        1489,
-        32,
-        62,
-        62,
-        32,
-        1490,
+        97, 32, 62, 62, 32, 1489, 32, 62, 62, 32, 1490,
       ]);
     });
 
@@ -253,10 +218,8 @@ describe("TranslateMessageFormatCompiler", () => {
     beforeEach(() => {
       translations = {
         alpha: {
-          one:
-            "{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}",
-          two:
-            "{gender, select, male{He is} female{She is} other{They are}} {how}",
+          one: "{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}",
+          two: "{gender, select, male{He is} female{She is} other{They are}} {how}",
         },
       };
     });
