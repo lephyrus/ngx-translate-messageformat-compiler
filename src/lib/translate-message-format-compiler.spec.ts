@@ -149,8 +149,8 @@ describe("TranslateMessageFormatCompiler", () => {
 
     it("should respect passed-in formatters", () => {
       const formatters = {
-        locale: (v: any, lc: string) => lc,
-        prop: (v: { [key: string]: string }, lc: any, p: any) => v[p],
+        locale: (_v: any, lc: string) => lc,
+        prop: (v: { [key: string]: string }, _lc: any, p: any) => v[p],
         upcase: (v: string) => v.toUpperCase(),
       };
       const messages = {
@@ -180,7 +180,7 @@ describe("TranslateMessageFormatCompiler", () => {
       try {
         compiler.compile(invalidPluralString, "en-GB");
         fail("Should throw an exception");
-      } catch (e) {
+      } catch (e: any) {
         expect(e.message).toContain("Valid plural keys for this locale are");
       }
 
@@ -190,7 +190,7 @@ describe("TranslateMessageFormatCompiler", () => {
       try {
         compiler.compile(invalidPluralString, "en-GB");
         fail("Should throw an exception");
-      } catch (e) {
+      } catch (e: any) {
         expect(e.message).toContain("Valid plural keys for this locale are");
       }
 
