@@ -1844,15 +1844,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ngx-translate/core@npm:^11.0.1":
-  version: 11.0.1
-  resolution: "@ngx-translate/core@npm:11.0.1"
+"@ngx-translate/core@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "@ngx-translate/core@npm:14.0.0"
   dependencies:
-    tslib: ^1.9.0
+    tslib: ^2.3.0
   peerDependencies:
-    "@angular/core": ">=7.0.0"
-    rxjs: ">=6.3.0"
-  checksum: 9a7b7a6611867ad65354e1501c7ec5e922e361e7cdb9bab82c418ce51c4bd93ad18eb519a24dc16fa36e6f509e9ba31c68bc3461cb457a2ce0b76311a1eaf06c
+    "@angular/core": ">=13.0.0"
+    rxjs: ^6.5.3 || ^7.4.0
+  checksum: d1afc35e7b729caf776e78c10badc0853b63252bdf2fa129f1b95a271cd15cf6f22ffecc52922ffbe1c3aca7d8e08351669e8bae18727664aba66b5d405f05e1
   languageName: node
   linkType: hard
 
@@ -7724,7 +7724,7 @@ fsevents@~2.1.2:
     "@angular/language-service": ~13.0.2
     "@angular/platform-browser": ~13.0.2
     "@angular/platform-browser-dynamic": ~13.0.2
-    "@ngx-translate/core": ^11.0.1
+    "@ngx-translate/core": ^14.0.0
     "@types/jasmine": ~3.6.0
     "@types/jasminewd2": ~2.0.3
     "@types/node": ^12.11.1
@@ -7751,8 +7751,8 @@ fsevents@~2.1.2:
     typescript: ~4.4.4
     zone.js: ~0.11.4
   peerDependencies:
-    "@angular/core": ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
-    "@ngx-translate/core": ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
+    "@angular/core": ^13.0.0
+    "@ngx-translate/core": ^14.0.0
     messageformat: ^2.0.5
   languageName: unknown
   linkType: soft

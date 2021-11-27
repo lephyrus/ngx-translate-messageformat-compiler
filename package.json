@@ -36,8 +36,8 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0",
-    "@ngx-translate/core": "^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@ngx-translate/core": "^14.0.0",
     "messageformat": "^2.0.5"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "@angular/language-service": "~13.0.2",
     "@angular/platform-browser": "~13.0.2",
     "@angular/platform-browser-dynamic": "~13.0.2",
-    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/core": "^14.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
