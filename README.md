@@ -26,7 +26,7 @@ npm install ngx-translate-messageformat-compiler messageformat --save
 yarn add ngx-translate-messageformat-compiler messageformat
 ```
 
-Something to be aware of if you deploy to strict production environments: [Fundamentally, messageformat is a compiler that turns ICU MessageFormat input into JavaScript.](https://messageformat.github.io/messageformat/page-build) This means it uses `new Function` under the hood which necessicates allowing `unsafe-eval` for the [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) Content Security Policy (CSP).
+Something to be aware of if you deploy to strict production environments: [Fundamentally, messageformat is a compiler that turns ICU MessageFormat input into JavaScript.](https://messageformat.github.io/messageformat/v2/page-build) This means it uses `new Function` under the hood which necessicates allowing `unsafe-eval` for the [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) Content Security Policy (CSP).
 
 ## Setup
 
