@@ -7887,7 +7887,7 @@ fsevents@~2.1.2:
     typescript: ~3.7.5
     zone.js: ~0.10.2
   peerDependencies:
-    "@angular/core": ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0
+    "@angular/core": ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
     "@ngx-translate/core": ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
     messageformat: ^2.0.5
   languageName: unknown

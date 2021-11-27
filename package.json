@@ -1,6 +1,6 @@
 {
   "name": "ngx-translate-messageformat-compiler",
-  "version": "4.10.0",
+  "version": "4.11.0",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
@@ -37,7 +37,7 @@
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0",
+    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0",
     "@ngx-translate/core": "^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0",
     "messageformat": "^2.0.5"
   },
