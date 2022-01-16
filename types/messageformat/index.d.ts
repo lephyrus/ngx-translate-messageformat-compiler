@@ -1,15 +1,15 @@
 declare module "messageformat" {
-  type Msg = (params: {}) => string;
-  type Formatter = (val: any, lc: string, arg?: string) => string;
+  type Msg = (params: Record<string, unknown>) => string;
+  type Formatter = (val: unknown, lc: string, arg?: string) => string;
   type SrcMessage = string | SrcObject;
 
   interface SrcObject {
     [key: string]: SrcMessage;
   }
   class MessageFormat {
-    public addFormatters: (
-      format: { [name: string]: Formatter }
-    ) => MessageFormat;
+    public addFormatters: (format: {
+      [name: string]: Formatter;
+    }) => MessageFormat;
     public disablePluralKeyChecks: () => MessageFormat;
     public setBiDiSupport: (enable: boolean) => MessageFormat;
     public setStrictNumberSign: (enable: boolean) => MessageFormat;

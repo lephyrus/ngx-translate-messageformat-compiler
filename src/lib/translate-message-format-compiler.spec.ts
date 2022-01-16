@@ -16,17 +16,7 @@ describe("TranslateMessageFormatCompiler", () => {
         "en-US"
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
-        97,
-        32,
-        62,
-        62,
-        32,
-        1489,
-        32,
-        62,
-        62,
-        32,
-        1490,
+        97, 32, 62, 62, 32, 1489, 32, 62, 62, 32, 1490,
       ]);
 
       // StrictNumberSign
@@ -49,23 +39,8 @@ describe("TranslateMessageFormatCompiler", () => {
         "en"
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
-        8206,
-        97,
-        8206,
-        32,
-        62,
-        62,
-        32,
-        8206,
-        1489,
-        8206,
-        32,
-        62,
-        62,
-        32,
-        8206,
-        1490,
-        8206,
+        8206, 97, 8206, 32, 62, 62, 32, 8206, 1489, 8206, 32, 62, 62, 32, 8206,
+        1490, 8206,
       ]);
 
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: false });
@@ -74,17 +49,7 @@ describe("TranslateMessageFormatCompiler", () => {
         "en"
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
-        97,
-        32,
-        62,
-        62,
-        32,
-        1489,
-        32,
-        62,
-        62,
-        32,
-        1490,
+        97, 32, 62, 62, 32, 1489, 32, 62, 62, 32, 1490,
       ]);
     });
 
@@ -149,8 +114,8 @@ describe("TranslateMessageFormatCompiler", () => {
 
     it("should respect passed-in formatters", () => {
       const formatters = {
-        locale: (v: any, lc: string) => lc,
-        prop: (v: { [key: string]: string }, lc: any, p: any) => v[p],
+        locale: (_v: any, lc: string) => lc,
+        prop: (v: { [key: string]: string }, _lc: any, p: any) => v[p],
         upcase: (v: string) => v.toUpperCase(),
       };
       const messages = {
@@ -180,7 +145,7 @@ describe("TranslateMessageFormatCompiler", () => {
       try {
         compiler.compile(invalidPluralString, "en-GB");
         fail("Should throw an exception");
-      } catch (e) {
+      } catch (e: any) {
         expect(e.message).toContain("Valid plural keys for this locale are");
       }
 
@@ -190,7 +155,7 @@ describe("TranslateMessageFormatCompiler", () => {
       try {
         compiler.compile(invalidPluralString, "en-GB");
         fail("Should throw an exception");
-      } catch (e) {
+      } catch (e: any) {
         expect(e.message).toContain("Valid plural keys for this locale are");
       }
 
@@ -253,10 +218,8 @@ describe("TranslateMessageFormatCompiler", () => {
     beforeEach(() => {
       translations = {
         alpha: {
-          one:
-            "{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}",
-          two:
-            "{gender, select, male{He is} female{She is} other{They are}} {how}",
+          one: "{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}",
+          two: "{gender, select, male{He is} female{She is} other{They are}} {how}",
         },
       };
     });
