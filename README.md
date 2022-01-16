@@ -114,7 +114,7 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 
 This library implements neither the syntax used for pluralization (et al) nor the "mechanics" for making translations work in your Angular app. The former is _MessageFormat_, the latter _ngx-translate_. Before you assume your problem is with _ngx-translate-messageformat-compiler_, please consult these ressources:
 
-- Get help on the message syntax for your translation strings: https://messageformat.github.io/messageformat/page-guide
+- Get help on the message syntax for your translation strings: https://messageformat.github.io/messageformat/guide
 - Get help on using ngx-translate (loading translations, using HTML tags in your strings, translate pipe vs. directive, etc.): https://github.com/ngx-translate/core
 
 Here's two important differences to _ngx-translate_'s default syntax when using *MessageFormat*:
