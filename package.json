@@ -1,6 +1,6 @@
 {
   "name": "ngx-translate-messageformat-compiler",
-  "version": "4.11.0",
+  "version": "5.0.0",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
