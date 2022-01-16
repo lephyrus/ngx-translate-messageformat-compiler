@@ -1,6 +1,6 @@
 import { Inject, Injectable, Optional } from "@angular/core";
 import { TranslateCompiler } from "@ngx-translate/core";
-import * as MessageFormat from "messageformat";
+import MessageFormat from "messageformat";
 import {
   defaultConfig,
   MessageFormatConfig,

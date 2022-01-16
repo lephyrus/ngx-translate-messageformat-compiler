@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "module": "es2020",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "strict": true,
     "target": "es2015",
