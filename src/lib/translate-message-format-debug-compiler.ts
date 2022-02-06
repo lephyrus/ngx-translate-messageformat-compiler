@@ -16,12 +16,7 @@ export class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatC
 
   public compileTranslations(value: any, lang: string): any {
     log(`COMPILE (${lang})`, value);
-    const { toString, ...interpolationFns } = super.compileTranslations(
-      value,
-      lang
-    );
-
-    return { toString, ...this.wrapRecursively(interpolationFns, value) };
+    return super.compileTranslations(value, lang);
   }
 
   private wrap(
@@ -32,16 +27,5 @@ export class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatC
       log("INTERPOLATE", reference, params);
       return fn(params);
     };
-  }
-
-  private wrapRecursively(obj: any, referenceObj: any): any {
-    return Object.keys(obj).reduce((acc: any, key: string) => {
-      const value = obj[key];
-      const referenceValue = referenceObj[key];
-
-      return typeof value === "function"
-        ? { ...acc, [key]: this.wrap(value, referenceValue) }
-        : { ...acc, [key]: this.wrapRecursively(value, referenceValue) };
-    }, {});
   }
 }
