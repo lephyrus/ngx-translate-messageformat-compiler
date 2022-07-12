@@ -4,14 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [5.1.0] - 2022-07-12
+### Fixed
+- Support for Angular v14 (#86)
+
 ## [5.0.1] - 2022-01-16
 ### Fixed
 - Change critical error by changing default import syntax for messageformat
 
 ## [5.0.0] - 2022-01-16
 ### Removed
-- Support for Angular version before v13
-- Support for ngx-translate versions before v14
+- Drop support for Angular versions before v13
+- Drop support for ngx-translate versions before v14
 
 ## [4.11.0] - 2021-11-27
 ### Added
