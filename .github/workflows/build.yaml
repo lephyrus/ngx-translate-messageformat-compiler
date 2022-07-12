@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      node-version: 12.x
+      node-version: 16.x
     steps:
       - name: Checkout
         uses: actions/checkout@v2
