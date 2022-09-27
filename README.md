@@ -19,18 +19,18 @@ This assumes that you've already installed [ngx-translate](https://github.com/ng
 
 Using `npm`:
 ```sh
-npm install ngx-translate-messageformat-compiler messageformat --save
+npm install ngx-translate-messageformat-compiler @messageformat/core --save
 ```
 ... or if you use `yarn`:
 ```sh
-yarn add ngx-translate-messageformat-compiler messageformat
+yarn add ngx-translate-messageformat-compiler @messageformat/core
 ```
 
-Something to be aware of if you deploy to strict production environments: [Fundamentally, messageformat is a compiler that turns ICU MessageFormat input into JavaScript.](https://messageformat.github.io/messageformat/v2/page-build) This means it uses `new Function` under the hood which necessicates allowing `unsafe-eval` for the [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) Content Security Policy (CSP).
+Something to be aware of if you deploy to strict production environments: [Fundamentally, messageformat is a compiler that turns ICU MessageFormat input into JavaScript](https://messageformat.github.io/messageformat/use/), and we do this at runtime. This means calling `new Function` under the hood, which requires allowing `unsafe-eval` for the [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) Content Security Policy (CSP).
 
 ## Setup
 
-This library currently supports Angular versions 13+ and ngx-translate versions 14+. (You can still use version 4.x, which supports Angular 6-13 and ngx-translate 10-13.) Check the documentation of @ngx-translate/core to know which of its versions to use, depending on your Angular version.
+In the current version, this library supports Angular versions 13+, ngx-translate versions 14+ and messageformat 3. Older versions of this library support older versions of these peer dependencies.
 
 ### Integration with ngx-translate
 
@@ -63,34 +63,14 @@ You can override the values used when configuring MessageFormat by providing a c
 ```ts
 {
   biDiSupport: false,
-  disablePluralKeyChecks: false,
   formatters: undefined,
-  locales: undefined,
   strictNumberSign: false
 }
 ```
 
-### Locale initialization
-
-By default, messageformat initializes *all* locales. It is recommended that you indicate which locales you will need, like this:
-
-```ts
-import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
-
-@NgModule({
-  // ...
-  providers: [
-    { provide: MESSAGE_FORMAT_CONFIG, useValue: { locales: ['ar', 'fr'] }}
-  ]
-
-})
-```
-
-The value for `locales` is either a string or an array of strings. The first locale is used as the default locale by messageformat. More info here: https://messageformat.github.io/messageformat/MessageFormat
-
 ### Advanced configuration
 
-MessageFormat instances provide some methods to influence its behaviour, among them `addFormatters`, `setBiDiSupport`, `setStrictNumberSign` and `disablePluralKeyChecks`. Learn about their meaning here: https://messageformat.github.io/messageformat/MessageFormat
+MessageFormat instances provide some options to influence its behaviour, among them `customFormatters`, `biDiSupport` and `strict`. Learn about their meaning here: https://messageformat.github.io/messageformat/api/core.messageformatoptions/ (The names used in the MESSAGE_FORMAT_CONFIG object are slightly different for backward-compatibility reasons.)
 
 This is how you would enable bi-directional support and add a custom formatter, for example:
 ```ts
@@ -166,7 +146,7 @@ Note that this illustrates using both the directives and the pipe provided by *n
 
 If you're here, you probably know what you're looking for. If you do wonder what this is, here's a brief explanation.
 
-[ICU Message Format](http://userguide.icu-project.org/formatparse/messages) is a standardized syntax for dealing with the translation of user-visible strings into various languages that may have different requirements for the correct declension of words (e.g. according to number, gender, case) - or to simplify: pluralization.
+[ICU Message Format](https://userguide.icu-project.org/formatparse/messages) is a standardized syntax for dealing with the translation of user-visible strings into various languages that may have different requirements for the correct declension of words (e.g. according to number, gender, case) - or to simplify: pluralization.
 
 [Messageformat.js](https://messageformat.github.io/) is a compliant implementation for Javascript.
 

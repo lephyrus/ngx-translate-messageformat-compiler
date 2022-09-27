@@ -4,8 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [6.0.0] - 2022-09-27
+### Added
+- Support for messageformat v3 (#74, #90), [check breaking
+  changes](https://github.com/messageformat/messageformat/releases/tag/messageformat@3.0.0-beta.1)
+
+### Removed
+- Dropped support for messageformat v2
+- Passing `locales` and `disablePluralKeyChecks` no longer has any effect (due
+  to changes in messageformat v3)
+
 ## [5.1.0] - 2022-07-12
-### Fixed
+### Added
 - Support for Angular v14 (#86)
 
 ## [5.0.1] - 2022-01-16
