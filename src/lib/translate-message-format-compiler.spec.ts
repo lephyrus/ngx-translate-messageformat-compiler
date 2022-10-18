@@ -97,6 +97,26 @@ describe("TranslateMessageFormatCompiler", () => {
         compiler.compile(messages.answer, "en-GB")({ obj: { q: 3, a: 42 } })
       ).toBe("Answer: 42");
     });
+
+    it("should respect passed-in currency value", () => {
+      const message = "Loan amount: {X, number, currency}";
+
+      compiler = new TranslateMessageFormatCompiler({
+        currency: "USD",
+        formatters: {},
+      });
+      expect(compiler.compile(message, "en")({ X: 3485.051 })).toBe(
+        "Loan amount: $3,485.05"
+      );
+
+      compiler = new TranslateMessageFormatCompiler({
+        currency: "EUR",
+        formatters: {},
+      });
+      expect(compiler.compile(message, "en")({ X: 3485.051 })).toBe(
+        "Loan amount: €3,485.05"
+      );
+    });
   });
 
   describe("compile", () => {

@@ -64,7 +64,8 @@ You can override the values used when configuring MessageFormat by providing a c
 {
   biDiSupport: false,
   formatters: undefined,
-  strictNumberSign: false
+  strictNumberSign: false,
+  currency: 'USD'
 }
 ```
 
