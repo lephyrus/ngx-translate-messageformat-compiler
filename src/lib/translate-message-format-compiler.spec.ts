@@ -101,18 +101,12 @@ describe("TranslateMessageFormatCompiler", () => {
     it("should respect passed-in currency value", () => {
       const message = "Loan amount: {X, number, currency}";
 
-      compiler = new TranslateMessageFormatCompiler({
-        currency: "USD",
-        formatters: {},
-      });
+      compiler = new TranslateMessageFormatCompiler({ currency: "USD" });
       expect(compiler.compile(message, "en")({ X: 3485.051 })).toBe(
         "Loan amount: $3,485.05"
       );
 
-      compiler = new TranslateMessageFormatCompiler({
-        currency: "EUR",
-        formatters: {},
-      });
+      compiler = new TranslateMessageFormatCompiler({ currency: "EUR" });
       expect(compiler.compile(message, "en")({ X: 3485.051 })).toBe(
         "Loan amount: €3,485.05"
       );
