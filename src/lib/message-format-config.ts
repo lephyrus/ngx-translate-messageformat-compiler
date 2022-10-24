@@ -11,10 +11,12 @@ export interface MessageFormatConfig {
     [key: string]: CustomFormatter;
   };
   strictNumberSign?: boolean;
+  currency?: string;
 }
 
 export const defaultConfig: MessageFormatConfig = {
   biDiSupport: false,
   formatters: {},
   strictNumberSign: false,
+  currency: "USD",
 };
