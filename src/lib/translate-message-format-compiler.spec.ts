@@ -101,10 +101,13 @@ describe("TranslateMessageFormatCompiler", () => {
 
   describe("compile", () => {
     let icuString: string;
+    let numberIcuString: string;
 
     beforeEach(() => {
       icuString =
         "{count, plural, =0{No} one{A} other{Several}} {count, plural, one{word} other{words}}";
+
+      numberIcuString = "Pi is approximately {pi, number, integer}";
     });
 
     beforeEach(() => {
@@ -119,6 +122,11 @@ describe("TranslateMessageFormatCompiler", () => {
     it("should return the compilation function for composed locales", () => {
       const result = compiler.compile(icuString, "en-GB");
       expect(result({ count: 1 })).toBe("A word");
+    });
+
+    it("should use the number formatter correctly", () => {
+      const result = compiler.compile(numberIcuString, "en");
+      expect(result({ pi: Math.PI })).toBe("Pi is approximately 3");
     });
   });
 

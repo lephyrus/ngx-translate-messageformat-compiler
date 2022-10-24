@@ -15,6 +15,6 @@ export interface MessageFormatConfig {
 
 export const defaultConfig: MessageFormatConfig = {
   biDiSupport: false,
-  formatters: undefined,
+  formatters: {},
   strictNumberSign: false,
 };
