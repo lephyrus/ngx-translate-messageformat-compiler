@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [6.1.0] - 2022-11-05
+### Added
+- Support for configuring the default currency (#33)
+
+### Fixed
+- Messageformat's integrated formatters like `number` and `date` now
+  also work when no custom formatters are configured.
+
 ## [6.0.0] - 2022-09-27
 ### Added
 - Support for messageformat v3 (#74, #90), [check breaking
