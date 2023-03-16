@@ -13,16 +13,16 @@ jobs:
       node-version: 16.x
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Node ${{ env.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.node-version }}
       - id: find-yarn-cache-folder
         name: Find Yarn's cache folder
-        run: echo "::set-output name=path::$(yarn config get cacheFolder)"
+        run: echo "path=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
       - name: Cache Yarn's cache folder
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ${{ steps.find-yarn-cache-folder.outputs.path }}
           key: yarn-cache-folder-os-${{ runner.os }}-node-${{ env.node-version }}-${{ hashFiles('yarn.lock') }}
@@ -39,7 +39,7 @@ jobs:
         run: yarn build:prod
       - name: Pack
         run: cd dist && npm pack
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: npm-package
           path: dist/*.tgz
