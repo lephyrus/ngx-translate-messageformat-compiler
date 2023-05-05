@@ -10,12 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      node-version: 16.x
+      node-version: 18
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Node ${{ env.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ env.node-version }}
       - id: find-yarn-cache-folder
