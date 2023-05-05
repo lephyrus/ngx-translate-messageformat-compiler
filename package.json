@@ -36,7 +36,7 @@
     "tslib": "^2.5.0"
   },
   "peerDependencies": {
-    "@angular/core": "^13.0.0 || ^14.0.0 || ^15.0.0",
+    "@angular/core": ">=13.0.0",
     "@messageformat/core": "^3.0.0",
     "@ngx-translate/core": "^14.0.0"
   },
