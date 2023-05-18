@@ -2101,15 +2101,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ngx-translate/core@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "@ngx-translate/core@npm:14.0.0"
-  dependencies:
-    tslib: ^2.3.0
+"@ngx-translate/core@npm:^15.0.0":
+  version: 15.0.0
+  resolution: "@ngx-translate/core@npm:15.0.0"
   peerDependencies:
-    "@angular/core": ">=13.0.0"
-    rxjs: ^6.5.3 || ^7.4.0
-  checksum: d1afc35e7b729caf776e78c10badc0853b63252bdf2fa129f1b95a271cd15cf6f22ffecc52922ffbe1c3aca7d8e08351669e8bae18727664aba66b5d405f05e1
+    "@angular/common": ">=16.0.0"
+    "@angular/core": ">=16.0.0"
+    rxjs: ^6.5.5 || ^7.4.0
+  checksum: adf7a1c38a073159319309238c8bcd612bfb1749dbd9ecc2719c0870d9eda7bb9311151b9ce0074c9907aec7c32268059927892101de85dc5a7184010ef213ce
   languageName: node
   linkType: hard
 
@@ -7879,7 +7878,7 @@ __metadata:
     "@angular/platform-browser": ^16.0.0
     "@angular/platform-browser-dynamic": ^16.0.0
     "@messageformat/core": ^3.1.0
-    "@ngx-translate/core": ^14.0.0
+    "@ngx-translate/core": ^15.0.0
     "@types/jasmine": ~4.3.1
     "@types/jasminewd2": ~2.0.10
     "@types/node": ^18.16.4
@@ -7906,7 +7905,7 @@ __metadata:
   peerDependencies:
     "@angular/core": ">=13.0.0"
     "@messageformat/core": ^3.0.0
-    "@ngx-translate/core": ^14.0.0
+    "@ngx-translate/core": ^14.0.0 || ^15.0.0
   languageName: unknown
   linkType: soft
 
