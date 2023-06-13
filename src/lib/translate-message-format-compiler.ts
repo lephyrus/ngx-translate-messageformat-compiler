@@ -27,12 +27,13 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
       biDiSupport,
       strictNumberSign: strict,
       currency,
+      strictPluralKeys
     } = {
       ...defaultConfig,
       ...config,
     };
 
-    this.config = { customFormatters, biDiSupport, strict, currency };
+    this.config = { customFormatters, biDiSupport, strict, currency, strictPluralKeys };
   }
 
   public compile(value: string, lang: string): (params: any) => string {

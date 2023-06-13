@@ -37,7 +37,7 @@
   },
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@messageformat/core": "^3.0.0",
+    "@messageformat/core": "^3.2.0",
     "@ngx-translate/core": "^14.0.0 || ^15.0.0"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "@angular/language-service": "^16.0.0",
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
-    "@messageformat/core": "^3.1.0",
+    "@messageformat/core": "^3.2.0",
     "@ngx-translate/core": "^15.0.0",
     "@types/jasmine": "~4.3.1",
     "@types/jasminewd2": "~2.0.10",

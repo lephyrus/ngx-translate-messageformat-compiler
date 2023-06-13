@@ -111,6 +111,20 @@ describe("TranslateMessageFormatCompiler", () => {
         "Loan amount: €3,485.05"
       );
     });
+
+    it('should respect passed-in strictPluralKeys value', () => {
+      compiler = new TranslateMessageFormatCompiler({ strictPluralKeys: false });
+      const pastryMsg = [
+        "{X, plural,",
+        "one{{P, select, cookie{a cookie} other{a pie}}}",
+        "few{{P, select, cookie{a cookie} other{# pies}}}",
+        "other{{P, select, cookie{# cookies} other{# pies}}}}",
+      ].join(" ");
+
+      expect(compiler.compile(pastryMsg, "en")({ X: 3, P: "pie" })).toBe(
+          "3 pies"
+      );
+    });
   });
 
   describe("compile", () => {

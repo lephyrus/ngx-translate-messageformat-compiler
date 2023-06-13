@@ -2044,17 +2044,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@messageformat/core@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@messageformat/core@npm:3.1.0"
+"@messageformat/core@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@messageformat/core@npm:3.2.0"
   dependencies:
     "@messageformat/date-skeleton": ^1.0.0
     "@messageformat/number-skeleton": ^1.0.0
-    "@messageformat/parser": ^5.0.0
+    "@messageformat/parser": ^5.1.0
     "@messageformat/runtime": ^3.0.1
     make-plural: ^7.0.0
     safe-identifier: ^0.4.1
-  checksum: ab991b38beca6c3d9b819379b249c7caa71e4632821479d99cbd4f6f1f7f959d44d6ad499b3dd06713f5e489a280a62956de635141f38ad71495ab9a6a5ebe31
+  checksum: 035c05875a395dc520dd21bb383272354d7575262bb76851e86fb963c1895bc17cf61ee234700699e141dd80e11575509def037021c6bc0660224dc55718a3b5
   languageName: node
   linkType: hard
 
@@ -2072,12 +2072,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@messageformat/parser@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@messageformat/parser@npm:5.0.0"
+"@messageformat/parser@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@messageformat/parser@npm:5.1.0"
   dependencies:
     moo: ^0.5.1
-  checksum: e595910e8801e17b1e762a1824e4fc97baf6ccc21f5f896d6eae3e537ca2eaed0f699ac20b44d03c38ad20340b57ef0f7c7cf056213d31dd156e65b4d030c8c0
+  checksum: e5c53d1328f90bcf4bf01321c996e4aa18bff95e30b4bb508284a7f290bbaf496adffec20407596aaf6556467cbd82bee8931ca0982a4254ded651569d356da2
   languageName: node
   linkType: hard
 
@@ -7877,7 +7877,7 @@ __metadata:
     "@angular/language-service": ^16.0.0
     "@angular/platform-browser": ^16.0.0
     "@angular/platform-browser-dynamic": ^16.0.0
-    "@messageformat/core": ^3.1.0
+    "@messageformat/core": ^3.2.0
     "@ngx-translate/core": ^15.0.0
     "@types/jasmine": ~4.3.1
     "@types/jasminewd2": ~2.0.10
@@ -7904,7 +7904,7 @@ __metadata:
     zone.js: ~0.13.0
   peerDependencies:
     "@angular/core": ">=13.0.0"
-    "@messageformat/core": ^3.0.0
+    "@messageformat/core": ^3.2.0
     "@ngx-translate/core": ^14.0.0 || ^15.0.0
   languageName: unknown
   linkType: soft

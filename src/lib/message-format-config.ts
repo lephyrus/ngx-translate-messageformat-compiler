@@ -12,6 +12,7 @@ export interface MessageFormatConfig {
   };
   strictNumberSign?: boolean;
   currency?: string;
+  strictPluralKeys?: boolean;
 }
 
 export const defaultConfig: MessageFormatConfig = {
@@ -19,4 +20,5 @@ export const defaultConfig: MessageFormatConfig = {
   formatters: {},
   strictNumberSign: false,
   currency: "USD",
+  strictPluralKeys: true
 };
