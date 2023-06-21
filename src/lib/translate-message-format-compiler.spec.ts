@@ -112,8 +112,10 @@ describe("TranslateMessageFormatCompiler", () => {
       );
     });
 
-    it('should respect passed-in strictPluralKeys value', () => {
-      compiler = new TranslateMessageFormatCompiler({ strictPluralKeys: false });
+    it("should respect passed-in strictPluralKeys value", () => {
+      compiler = new TranslateMessageFormatCompiler({
+        strictPluralKeys: false,
+      });
       const pastryMsg = [
         "{X, plural,",
         "one{{P, select, cookie{a cookie} other{a pie}}}",
@@ -122,7 +124,7 @@ describe("TranslateMessageFormatCompiler", () => {
       ].join(" ");
 
       expect(compiler.compile(pastryMsg, "en")({ X: 3, P: "pie" })).toBe(
-          "3 pies"
+        "3 pies"
       );
     });
   });

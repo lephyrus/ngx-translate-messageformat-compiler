@@ -20,5 +20,5 @@ export const defaultConfig: MessageFormatConfig = {
   formatters: {},
   strictNumberSign: false,
   currency: "USD",
-  strictPluralKeys: true
+  strictPluralKeys: true,
 };
