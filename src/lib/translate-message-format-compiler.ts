@@ -54,7 +54,8 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
     return Object.keys(translations).reduce<{ [key: string]: any }>(
       (acc, key) => {
         const value = translations[key];
-        return { ...acc, [key]: this.compileTranslations(value, lang) };
+        acc[key] = this.compileTranslations(value, lang);
+        return acc;
       },
       {}
     );
