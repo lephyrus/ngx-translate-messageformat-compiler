@@ -13,6 +13,7 @@ export interface MessageFormatConfig {
   strictNumberSign?: boolean;
   currency?: string;
   strictPluralKeys?: boolean;
+  throwOnError?: boolean;
 }
 
 export const defaultConfig: MessageFormatConfig = {
@@ -21,4 +22,5 @@ export const defaultConfig: MessageFormatConfig = {
   strictNumberSign: false,
   currency: "USD",
   strictPluralKeys: true,
+  throwOnError: false,
 };
