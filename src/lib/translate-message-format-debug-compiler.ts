@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
-import { TranslateMessageFormatCompiler } from "./translate-message-format-compiler";
+import { MessageFunction } from "@messageformat/core";
+import {
+  CompilationResult,
+  TranslateMessageFormatCompiler,
+} from "./translate-message-format-compiler";
 
 /* eslint-disable-next-line  no-console */
 const log = (...message: string[]) => console.log(tag, ...message);
@@ -7,11 +11,16 @@ const tag = "[TranslateMessageFormatCompiler]";
 
 @Injectable()
 export class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatCompiler {
-  public compile(value: string, lang: string): (params: any) => string {
+  public compile<Result extends CompilationResult = MessageFunction<"string">>(
+    value: string,
+    lang: string
+  ): Result {
     log(`COMPILE (${lang})`, value);
     const interpolationFn = super.compile(value, lang);
 
-    return this.wrap(interpolationFn, value);
+    return isFunction(interpolationFn)
+      ? (this.wrap(interpolationFn, value) as Result)
+      : (value as Result);
   }
 
   public compileTranslations(value: any, lang: string): any {
@@ -20,12 +29,17 @@ export class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatC
   }
 
   private wrap(
-    fn: (params: any) => string,
+    fn: MessageFunction<"string">,
     reference: string
-  ): (params: any) => string {
+  ): MessageFunction<"string"> {
     return (params: any) => {
       log("INTERPOLATE", reference, params);
       return fn(params);
     };
   }
+}
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+function isFunction(value: any): value is Function {
+  return typeof value === "function";
 }

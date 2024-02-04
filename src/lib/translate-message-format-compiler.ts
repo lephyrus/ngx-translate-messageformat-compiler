@@ -10,6 +10,8 @@ import {
   MESSAGE_FORMAT_CONFIG,
 } from "./message-format-config";
 
+export type CompilationResult = MessageFunction<"string"> | string;
+
 /**
  * This compiler expects ICU syntax and compiles the expressions with messageformat.js
  */
@@ -18,6 +20,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
   private mfCache = new Map<string, MessageFormat>();
   private messageFormatOptions: MessageFormatOptions<"string">;
   private throwOnError: boolean;
+  private fallbackPrefix?: string;
 
   constructor(
     @Optional()
@@ -33,6 +36,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
       currency,
       strictPluralKeys,
       throwOnError,
+      fallbackPrefix,
     } = {
       ...defaultConfig,
       ...config,
@@ -46,9 +50,17 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
       strictPluralKeys,
     };
     this.throwOnError = !!throwOnError;
+    this.fallbackPrefix = fallbackPrefix;
   }
 
-  public compile(value: string, lang: string): (params: any) => string {
+  public compile<Result extends CompilationResult = MessageFunction<"string">>(
+    value: string,
+    lang: string
+  ): Result {
+    if (this.fallbackPrefix && value.startsWith(this.fallbackPrefix)) {
+      return value.slice(this.fallbackPrefix.length) as Result;
+    }
+
     let result: MessageFunction<"string">;
 
     try {
@@ -69,7 +81,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
       result = wrapInterpolationFunction(result, value);
     }
 
-    return result;
+    return result as Result;
   }
 
   public compileTranslations(translations: any, lang: string): any {

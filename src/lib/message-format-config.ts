@@ -14,6 +14,7 @@ export interface MessageFormatConfig {
   currency?: string;
   strictPluralKeys?: boolean;
   throwOnError?: boolean;
+  fallbackPrefix?: string;
 }
 
 export const defaultConfig: MessageFormatConfig = {
@@ -23,4 +24,5 @@ export const defaultConfig: MessageFormatConfig = {
   currency: "USD",
   strictPluralKeys: true,
   throwOnError: false,
+  fallbackPrefix: undefined,
 };

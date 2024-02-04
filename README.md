@@ -66,8 +66,9 @@ You can override the values used when configuring MessageFormat by providing a c
   formatters: {},
   strictNumberSign: false,
   currency: "USD",
-  strictPluralKeys: true
-  throwOnError: false
+  strictPluralKeys: true,
+  throwOnError: false,
+  fallbackPrefix: undefined
 }
 ```
 
@@ -101,6 +102,30 @@ Here's two important differences to _ngx-translate_'s default syntax when using 
 
 - You lose the ability to access object properties in your placeholders: `'Hello {name.first} {name.last}'` won't work.
 - Simple placeholders are enclosed in single curly braces instead of double curly braces: `Hello {name}`
+
+### Transitioning from _ngx-translate_ default syntax to _MessageFormat_ syntax
+
+If you have to transition on a message-by-message basis, you can do so by configuring a prefix that, if found on the message, will cause falling back to _ngx-translate_'s default message interpolation.
+
+```ts
+import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
+
+@NgModule({
+  // ...
+  providers: [{
+    provide: MESSAGE_FORMAT_CONFIG,
+    useValue: {
+      fallbackPrefix: 'your_choice::'
+    }
+  }]
+```
+
+``` json
+{
+  "uses-messageformat-syntax": "{ COUNT, plural, =0 {There are no results.} one {There is one result.} other {There are # results.}",
+  "uses-default-syntax": "'your_choice::Hello {{name}}."
+}
+```
 
 ### Debugging
 
