@@ -127,6 +127,33 @@ describe("TranslateMessageFormatCompiler", () => {
         "3 pies"
       );
     });
+
+    it("should respect passed-in throwOnError value", () => {
+      compiler = new TranslateMessageFormatCompiler();
+
+      const illegalMsg = "gimme {sweet";
+      const legalMsg = "gimme {sweet}";
+
+      expect(compiler.compile(illegalMsg, "en")({ sweet: "cookie" })).toBe(
+        "gimme {sweet"
+      );
+      expect(compiler.compile(null as any, "en")({ sweet: "cookie" })).toBe(
+        "null"
+      );
+      expect(compiler.compile(legalMsg, "en")(null)).toBe("gimme {sweet}");
+
+      compiler = new TranslateMessageFormatCompiler({ throwOnError: true });
+
+      expect(() => compiler.compile(illegalMsg, "en")).toThrowError(
+        /Unexpected message end/
+      );
+      expect(() => compiler.compile(null as any, "en")).toThrowError(
+        /Cannot convert undefined or null/
+      );
+      expect(() => compiler.compile(legalMsg, "en")(null)).toThrowError(
+        /Cannot read properties of null/
+      );
+    });
   });
 
   describe("compile", () => {

@@ -67,6 +67,7 @@ You can override the values used when configuring MessageFormat by providing a c
   strictNumberSign: false,
   currency: "USD",
   strictPluralKeys: true
+  throwOnError: false
 }
 ```
 
@@ -100,6 +101,15 @@ Here's two important differences to _ngx-translate_'s default syntax when using 
 
 - You lose the ability to access object properties in your placeholders: `'Hello {name.first} {name.last}'` won't work.
 - Simple placeholders are enclosed in single curly braces instead of double curly braces: `Hello {name}`
+
+### Debugging
+
+There are two stages in the translation process:
+
+1. Compiling the message (e.g. `Hello {name}`) to a function: this fails if the MessageFormat syntax is incorrect, for example.
+2. Interpolating parameters (e.g. using `Linda` as the name in the above message): this fails if the parameters don't "fit" the message.
+
+By default, the errors that get thrown in these two stages are caught and logged to the console, and the original message is returned as the translation. If you do not want this behaviour, pass `throwOnError: true` in `MESSAGE_FORMAT_CONFIG` (see above). (Note that this may make all translations fail if there's a syntax error in any message.)
 
 This library also exports `TranslateMessageFormatDebugCompiler`, which you can use as a drop-in replacement for the regular `TranslateMessageFormatCompiler`.
 The debug compiler will log to the console whenever a translation string is compiled to an interpolation function, and whenever such a function is called (with interpolation parameters) to compute the final translated string.
