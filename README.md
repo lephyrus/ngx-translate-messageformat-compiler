@@ -105,7 +105,7 @@ Here's two important differences to _ngx-translate_'s default syntax when using 
 
 ### Transitioning from _ngx-translate_ default syntax to _MessageFormat_ syntax
 
-If you have to transition on a message-by-message basis, you can do so by configuring a prefix that, if found on the message, will cause falling back to _ngx-translate_'s default message interpolation.
+If you have to transition on a message-by-message basis, you can do so by configuring a prefix that, if found on the message, will cause the compiler to "ignore" the message. This has the effect of falling back on _ngx-translate_'s default message interpolation.
 
 ```ts
 import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';

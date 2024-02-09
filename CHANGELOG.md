@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [7.0.0] - 2024-02-09
+### Added
+- **Breaking Change** Catch and log errors during message compilation and
+  interpolation by default (#47, #97, #102): provide `throwOnError: true` to
+  restore the previous behaviour
+- Allow for transitional period by assuming that messages that start with the
+  provided `fallbackPrefix` use ngx-translate default syntax (#30)
+
 ## [6.5.1] - 2024-01-04
 ### Fixed
 - Avoid unnecessarily slow processing of (lots of) translations in
