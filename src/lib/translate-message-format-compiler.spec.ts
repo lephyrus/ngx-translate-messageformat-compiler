@@ -140,7 +140,9 @@ describe("TranslateMessageFormatCompiler", () => {
       expect(compiler.compile(null as any, "en")({ sweet: "cookie" })).toBe(
         "null"
       );
-      expect(compiler.compile(legalMsg, "en")(null)).toBe("gimme {sweet}");
+      expect(compiler.compile(legalMsg, "en")(null as any)).toBe(
+        "gimme {sweet}"
+      );
 
       compiler = new TranslateMessageFormatCompiler({ throwOnError: true });
 
@@ -150,8 +152,21 @@ describe("TranslateMessageFormatCompiler", () => {
       expect(() => compiler.compile(null as any, "en")).toThrowError(
         /Cannot convert undefined or null/
       );
-      expect(() => compiler.compile(legalMsg, "en")(null)).toThrowError(
+      expect(() => compiler.compile(legalMsg, "en")(null as any)).toThrowError(
         /Cannot read properties of null/
+      );
+    });
+
+    it("should respect passed-in fallbackPrefix value", () => {
+      compiler = new TranslateMessageFormatCompiler({
+        fallbackPrefix: "fallback:",
+      });
+
+      const message = "{{greeting}}";
+
+      expect(compiler.compile(message, "en")({ greeting: "hi" })).toBe("{hi}");
+      expect(compiler.compile<string>("fallback:" + message, "en")).toBe(
+        "{{greeting}}"
       );
     });
   });
