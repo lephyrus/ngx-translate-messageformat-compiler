@@ -13,7 +13,7 @@ describe("TranslateMessageFormatCompiler", () => {
       // BiDiSupport: false
       const result = compiler.compile(
         "{0} >> {1} >> {2}",
-        "en-US"
+        "en-US",
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         97, 32, 62, 62, 32, 1489, 32, 62, 62, 32, 1490,
@@ -26,7 +26,7 @@ describe("TranslateMessageFormatCompiler", () => {
         "other{{P, select, cookie{# cookies} other{# pies}}}}",
       ].join(" ");
       expect(compiler.compile(pastryMsg, "en")({ X: 3, P: "pie" })).toBe(
-        "3 pies"
+        "3 pies",
       );
     });
 
@@ -36,7 +36,7 @@ describe("TranslateMessageFormatCompiler", () => {
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: true });
       result = compiler.compile(
         "{0} >> {1} >> {2}",
-        "en"
+        "en",
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         8206, 97, 8206, 32, 62, 62, 32, 8206, 1489, 8206, 32, 62, 62, 32, 8206,
@@ -46,7 +46,7 @@ describe("TranslateMessageFormatCompiler", () => {
       compiler = new TranslateMessageFormatCompiler({ biDiSupport: false });
       result = compiler.compile(
         "{0} >> {1} >> {2}",
-        "en"
+        "en",
       )(["a", "\u05d1", "\u05d2"]);
       expect(toCharCodes(result)).toEqual([
         97, 32, 62, 62, 32, 1489, 32, 62, 62, 32, 1490,
@@ -62,14 +62,14 @@ describe("TranslateMessageFormatCompiler", () => {
 
       compiler = new TranslateMessageFormatCompiler({ strictNumberSign: true });
       expect(compiler.compile(pastryMsg, "en")({ X: 3, P: "pie" })).toBe(
-        "# pies"
+        "# pies",
       );
 
       compiler = new TranslateMessageFormatCompiler({
         strictNumberSign: false,
       });
       expect(compiler.compile(pastryMsg, "en")({ X: 3, P: "pie" })).toBe(
-        "3 pies"
+        "3 pies",
       );
     });
 
@@ -88,13 +88,13 @@ describe("TranslateMessageFormatCompiler", () => {
       compiler = new TranslateMessageFormatCompiler({ formatters });
 
       expect(compiler.compile(messages.describe, "en-GB")({ VAR: "big" })).toBe(
-        "This is BIG."
+        "This is BIG.",
       );
       expect(compiler.compile(messages.locale, "en-GB")({})).toBe(
-        "The current locale is en-GB."
+        "The current locale is en-GB.",
       );
       expect(
-        compiler.compile(messages.answer, "en-GB")({ obj: { q: 3, a: 42 } })
+        compiler.compile(messages.answer, "en-GB")({ obj: { q: 3, a: 42 } }),
       ).toBe("Answer: 42");
     });
 
@@ -103,12 +103,12 @@ describe("TranslateMessageFormatCompiler", () => {
 
       compiler = new TranslateMessageFormatCompiler({ currency: "USD" });
       expect(compiler.compile(message, "en")({ X: 3485.051 })).toBe(
-        "Loan amount: $3,485.05"
+        "Loan amount: $3,485.05",
       );
 
       compiler = new TranslateMessageFormatCompiler({ currency: "EUR" });
       expect(compiler.compile(message, "en")({ X: 3485.051 })).toBe(
-        "Loan amount: €3,485.05"
+        "Loan amount: €3,485.05",
       );
     });
 
@@ -124,7 +124,7 @@ describe("TranslateMessageFormatCompiler", () => {
       ].join(" ");
 
       expect(compiler.compile(pastryMsg, "en")({ X: 3, P: "pie" })).toBe(
-        "3 pies"
+        "3 pies",
       );
     });
 
@@ -135,25 +135,25 @@ describe("TranslateMessageFormatCompiler", () => {
       const legalMsg = "gimme {sweet}";
 
       expect(compiler.compile(illegalMsg, "en")({ sweet: "cookie" })).toBe(
-        "gimme {sweet"
+        "gimme {sweet",
       );
       expect(compiler.compile(null as any, "en")({ sweet: "cookie" })).toBe(
-        "null"
+        "null",
       );
       expect(compiler.compile(legalMsg, "en")(null as any)).toBe(
-        "gimme {sweet}"
+        "gimme {sweet}",
       );
 
       compiler = new TranslateMessageFormatCompiler({ throwOnError: true });
 
       expect(() => compiler.compile(illegalMsg, "en")).toThrowError(
-        /Unexpected message end/
+        /Unexpected message end/,
       );
       expect(() => compiler.compile(null as any, "en")).toThrowError(
-        /Cannot convert undefined or null/
+        /Cannot convert undefined or null/,
       );
       expect(() => compiler.compile(legalMsg, "en")(null as any)).toThrowError(
-        /Cannot read properties of null/
+        /Cannot read properties of null/,
       );
     });
 
@@ -166,7 +166,7 @@ describe("TranslateMessageFormatCompiler", () => {
 
       expect(compiler.compile(message, "en")({ greeting: "hi" })).toBe("{hi}");
       expect(compiler.compile<string>("fallback:" + message, "en")).toBe(
-        "{{greeting}}"
+        "{{greeting}}",
       );
     });
   });
@@ -222,7 +222,7 @@ describe("TranslateMessageFormatCompiler", () => {
       const result = compiler.compileTranslations(translations, "en");
       expect(result.alpha.one({ count: 1 })).toBe("A word");
       expect(result.alpha.two({ gender: "female", how: "cool" })).toBe(
-        "She is cool"
+        "She is cool",
       );
     });
 
@@ -230,7 +230,7 @@ describe("TranslateMessageFormatCompiler", () => {
       const result = compiler.compileTranslations(translations, "en-GB");
       expect(result.alpha.one({ count: 1 })).toBe("A word");
       expect(result.alpha.two({ gender: "female", how: "cool" })).toBe(
-        "She is cool"
+        "She is cool",
       );
     });
   });

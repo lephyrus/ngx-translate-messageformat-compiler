@@ -25,7 +25,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
   constructor(
     @Optional()
     @Inject(MESSAGE_FORMAT_CONFIG)
-    config?: MessageFormatConfig
+    config?: MessageFormatConfig,
   ) {
     super();
 
@@ -55,7 +55,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
 
   public compile<Result extends CompilationResult = MessageFunction<"string">>(
     value: string,
-    lang: string
+    lang: string,
   ): Result {
     if (this.fallbackPrefix && value.startsWith(this.fallbackPrefix)) {
       return value.slice(this.fallbackPrefix.length) as Result;
@@ -72,7 +72,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
 
       console.error(err);
       console.error(
-        `[ngx-translate-messageformat-compiler] Could not compile message for lang '${lang}': '${value}'`
+        `[ngx-translate-messageformat-compiler] Could not compile message for lang '${lang}': '${value}'`,
       );
       result = compileFallback(value, lang);
     }
@@ -95,7 +95,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
         acc[key] = this.compileTranslations(value, lang);
         return acc;
       },
-      {}
+      {},
     );
   }
 
@@ -103,7 +103,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
     if (!this.mfCache.has(locale)) {
       this.mfCache.set(
         locale,
-        new MessageFormat<"string">(locale, this.messageFormatOptions)
+        new MessageFormat<"string">(locale, this.messageFormatOptions),
       );
     }
 
@@ -114,7 +114,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
 
 function wrapInterpolationFunction(
   fn: MessageFunction<"string">,
-  message: string
+  message: string,
 ): MessageFunction<"string"> {
   return (params: any) => {
     let result: string = message;
@@ -124,7 +124,7 @@ function wrapInterpolationFunction(
     } catch (err) {
       console.error(err);
       console.error(
-        `[ngx-translate-messageformat-compiler] Could not interpolate '${message}' with params '${params}'`
+        `[ngx-translate-messageformat-compiler] Could not interpolate '${message}' with params '${params}'`,
       );
     }
 
@@ -134,11 +134,11 @@ function wrapInterpolationFunction(
 
 function compileFallback(
   message: string,
-  lang: string
+  lang: string,
 ): MessageFunction<"string"> {
   return () => {
     console.warn(
-      `[ngx-translate-messageformat-compiler] Falling back to original invalid message: '${message}' ('${lang}')`
+      `[ngx-translate-messageformat-compiler] Falling back to original invalid message: '${message}' ('${lang}')`,
     );
 
     return String(message);
