@@ -15,7 +15,7 @@ describe("TranslateMessageFormatDebugCompiler", () => {
     expect(console.log).toHaveBeenCalledWith(
       "[TranslateMessageFormatCompiler]",
       "COMPILE (es)",
-      "foo"
+      "foo",
     );
   });
 
@@ -25,7 +25,7 @@ describe("TranslateMessageFormatDebugCompiler", () => {
     expect(console.log).toHaveBeenCalledWith(
       "[TranslateMessageFormatCompiler]",
       "COMPILE (fr)",
-      values
+      values,
     );
   });
 
@@ -39,7 +39,7 @@ describe("TranslateMessageFormatDebugCompiler", () => {
       "[TranslateMessageFormatCompiler]",
       "INTERPOLATE",
       interpolationString,
-      params
+      params,
     );
   });
 
@@ -47,7 +47,7 @@ describe("TranslateMessageFormatDebugCompiler", () => {
     const interpolationStringObj = { a: { a1: "a1 {x}" }, b: "b {y}" };
     const interpolationFnObj = compiler.compileTranslations(
       interpolationStringObj,
-      "en"
+      "en",
     );
     const params = { x: "x", y: "y" };
 
@@ -57,13 +57,13 @@ describe("TranslateMessageFormatDebugCompiler", () => {
       "[TranslateMessageFormatCompiler]",
       "INTERPOLATE",
       "a1 {x}",
-      params
+      params,
     );
     expect(console.log).toHaveBeenCalledWith(
       "[TranslateMessageFormatCompiler]",
       "INTERPOLATE",
       "b {y}",
-      params
+      params,
     );
   });
 });

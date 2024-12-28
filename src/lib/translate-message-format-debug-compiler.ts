@@ -13,7 +13,7 @@ const tag = "[TranslateMessageFormatCompiler]";
 export class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatCompiler {
   public compile<Result extends CompilationResult = MessageFunction<"string">>(
     value: string,
-    lang: string
+    lang: string,
   ): Result {
     log(`COMPILE (${lang})`, value);
     const interpolationFn = super.compile(value, lang);
@@ -30,7 +30,7 @@ export class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatC
 
   private wrap(
     fn: MessageFunction<"string">,
-    reference: string
+    reference: string,
   ): MessageFunction<"string"> {
     return (params: any) => {
       log("INTERPOLATE", reference, params);
@@ -39,7 +39,6 @@ export class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatC
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-function isFunction(value: any): value is Function {
+function isFunction(value: any): value is (...params: unknown[]) => unknown {
   return typeof value === "function";
 }

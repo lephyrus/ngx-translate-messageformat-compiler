@@ -8,20 +8,23 @@
 
 ## Table of Contents
 
-* [Installation](#installation)
-* [Setup](#setup)
-* [Usage](#usage)
-* [About](#about)
+- [Installation](#installation)
+- [Setup](#setup)
+- [Usage](#usage)
+- [About](#about)
 
 ## Installation
 
 This assumes that you've already installed [ngx-translate](https://github.com/ngx-translate/core).
 
 Using `npm`:
+
 ```sh
 npm install ngx-translate-messageformat-compiler @messageformat/core --save
 ```
+
 ... or if you use `yarn`:
+
 ```sh
 yarn add ngx-translate-messageformat-compiler @messageformat/core
 ```
@@ -37,10 +40,10 @@ In the current version, this library supports Angular versions 13+, ngx-translat
 You need to configure `TranslateModule` so it uses `TranslateMessageFormatCompiler` as the compiler:
 
 ```ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { TranslateCompiler, TranslateModule } from '@ngx-translate/core';
-import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { TranslateCompiler, TranslateModule } from "@ngx-translate/core";
+import { TranslateMessageFormatCompiler } from "ngx-translate-messageformat-compiler";
 
 import { AppComponent } from "./app";
 
@@ -50,16 +53,19 @@ import { AppComponent } from "./app";
     TranslateModule.forRoot({
       compiler: {
         provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler
-      }
-    })
+        useClass: TranslateMessageFormatCompiler,
+      },
+    }),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
 
+Check the [ngx-translate documentation](https://ngx-translate.org/reference/configuration/#standalone-components) for an example when using a "standalone" setup.
+
 You can override the values used when configuring MessageFormat by providing a configuration object for the `MESSAGE_FORMAT_CONFIG` injection token. Here's the default:
+
 ```ts
 {
   biDiSupport: false,
@@ -74,9 +80,10 @@ You can override the values used when configuring MessageFormat by providing a c
 
 ### Advanced configuration
 
-MessageFormat instances provide some options to influence its behaviour, among them `customFormatters`, `biDiSupport` and `strict`. Learn about their meaning here: https://messageformat.github.io/messageformat/api/core.messageformatoptions/ (The names used in the MESSAGE_FORMAT_CONFIG object are slightly different for backward-compatibility reasons.)
+MessageFormat instances provide some options to influence its behaviour, among them `customFormatters`, `biDiSupport` and `strict`. Learn about their meaning here: <https://messageformat.github.io/messageformat/api/core.messageformatoptions/> (The names used in the MESSAGE_FORMAT_CONFIG object are slightly different for backward-compatibility reasons.)
 
 This is how you would enable bi-directional support and add a custom formatter, for example:
+
 ```ts
 import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 
@@ -95,10 +102,10 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 
 This library implements neither the syntax used for pluralization (et al) nor the "mechanics" for making translations work in your Angular app. The former is _MessageFormat_, the latter _ngx-translate_. Before you assume your problem is with _ngx-translate-messageformat-compiler_, please consult these ressources:
 
-- Get help on the message syntax for your translation strings: https://messageformat.github.io/messageformat/guide
-- Get help on using ngx-translate (loading translations, using HTML tags in your strings, translate pipe vs. directive, etc.): https://github.com/ngx-translate/core
+- Get help on the message syntax for your translation strings: <https://messageformat.github.io/messageformat/guide>
+- Get help on using ngx-translate (loading translations, using HTML tags in your strings, translate pipe vs. directive, etc.): <https://ngx-translate.org/>
 
-Here's two important differences to _ngx-translate_'s default syntax when using *MessageFormat*:
+Here's two important differences to _ngx-translate_'s default syntax when using _MessageFormat_:
 
 - You lose the ability to access object properties in your placeholders: `'Hello {name.first} {name.last}'` won't work.
 - Simple placeholders are enclosed in single curly braces instead of double curly braces: `Hello {name}`
@@ -120,7 +127,7 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
   }]
 ```
 
-``` json
+```json
 {
   "uses-messageformat-syntax": "{ COUNT, plural, =0 {There are no results.} one {There is one result.} other {There are # results.}",
   "uses-default-syntax": "'your_choice::Hello {{name}}."
@@ -144,7 +151,8 @@ Here's an example to get you started:
 
 ### Example
 
-#### Translation strings:
+#### Translation strings
+
 ```json
 {
   "things": "There {count, plural, =0{is} one{is} other{are}} {count, plural, =0{} one{a} other{several}} {count, plural, =0{nothing} one{thing} other{things}}",
@@ -152,7 +160,8 @@ Here's an example to get you started:
 }
 ```
 
-#### View template:
+#### View template
+
 ```html
 <ul>
   <li translate [translateParams]="{ count: 0 }">things</li>
@@ -160,15 +169,18 @@ Here's an example to get you started:
   <li>{{'things' | translate:"{ count: 2 }"}}</li>
 </ul>
 <ul>
-  <li translate [translateParams]="{ gender: 'female', how: 'influential' }">people</li>
+  <li translate [translateParams]="{ gender: 'female', how: 'influential' }">
+    people
+  </li>
   <li translate [translateParams]="{ gender: 'male', how: 'funny' }">people</li>
   <li>{{'people' | translate:"{ how: 'affectionate' }"}}</li>
 </ul>
 ```
 
-Note that this illustrates using both the directives and the pipe provided by *ngx-translate*. You don't have to mix them, obviously.
+Note that this illustrates using both the directives and the pipe provided by _ngx-translate_. You don't have to mix them, obviously.
 
-#### Output:
+#### Output
+
 ```
 - There is nothing
 - There is a thing
