@@ -80,5 +80,7 @@
     "typescript": "5.6.3",
     "zone.js": "0.15.0"
   },
-  "packageManager": "yarn@3.5.1"
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.29.1"
+  }
 }
