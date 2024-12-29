@@ -23,12 +23,6 @@ Using `npm`:
 npm install ngx-translate-messageformat-compiler @messageformat/core --save
 ```
 
-... or if you use `yarn`:
-
-```sh
-yarn add ngx-translate-messageformat-compiler @messageformat/core
-```
-
 Something to be aware of if you deploy to strict production environments: [Fundamentally, messageformat is a compiler that turns ICU MessageFormat input into JavaScript](https://messageformat.github.io/messageformat/use/), and we do this at runtime. This means calling `new Function` under the hood, which requires allowing `unsafe-eval` for the [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) Content Security Policy (CSP).
 
 ## Setup
