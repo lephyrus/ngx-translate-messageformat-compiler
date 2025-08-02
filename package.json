@@ -41,11 +41,11 @@
     "@ngx-translate/core": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "devDependencies": {
-    "@angular-eslint/builder": "19.0.1",
-    "@angular-eslint/eslint-plugin": "19.0.1",
-    "@angular-eslint/eslint-plugin-template": "19.0.1",
-    "@angular-eslint/schematics": "19.0.1",
-    "@angular-eslint/template-parser": "19.0.1",
+    "@angular-eslint/builder": "20.1.1",
+    "@angular-eslint/eslint-plugin": "20.1.1",
+    "@angular-eslint/eslint-plugin-template": "20.1.1",
+    "@angular-eslint/schematics": "20.1.1",
+    "@angular-eslint/template-parser": "20.1.1",
     "@angular/build": "20.1.4",
     "@angular/cli": "20.1.4",
     "@angular/common": "20.1.4",
@@ -57,15 +57,15 @@
     "@angular/platform-browser-dynamic": "20.1.4",
     "@messageformat/core": "3.4.0",
     "@ngx-translate/core": "17.0.0",
-    "@types/jasmine": "5.1.5",
+    "@types/jasmine": "5.1.8",
     "@types/jasminewd2": "2.0.13",
-    "@types/node": "22.10.1",
-    "@typescript-eslint/eslint-plugin": "8.17.0",
-    "@typescript-eslint/parser": "8.17.0",
-    "eslint": "9.16.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.2.1",
-    "jasmine-core": "5.5.0",
+    "@types/node": "24.1.0",
+    "@typescript-eslint/eslint-plugin": "8.38.0",
+    "@typescript-eslint/parser": "8.38.0",
+    "eslint": "9.32.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.3",
+    "jasmine-core": "5.9.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
@@ -73,15 +73,13 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
     "ng-packagr": "20.1.0",
-    "prettier": "3.4.2",
-    "protractor": "7.0.0",
-    "rxjs": "7.8.1",
+    "prettier": "3.6.2",
+    "rxjs": "7.8.2",
     "tslint-config-prettier": "1.18.0",
     "typescript": "5.8.3",
-    "zone.js": "0.15.0"
+    "zone.js": "0.15.1"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.29.1"
+    "@rollup/rollup-linux-x64-gnu": "4.46.2"
   }
 }
-
