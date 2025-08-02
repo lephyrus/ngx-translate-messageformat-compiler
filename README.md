@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/ngx-translate-messageformat-compiler.svg)](https://www.npmjs.com/package/ngx-translate-messageformat-compiler) ![build](https://github.com/lephyrus/ngx-translate-messageformat-compiler/workflows/build/badge.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-**[Example App](https://stackblitz.com/edit/ngx-translate-messageformat-compiler-example)** (StackBlitz)
+**[Example App](https://stackblitz.com/edit/stackblitz-starters-bunksjia?file=src%2Fapp%2Fapp.component.ts)** (StackBlitz)
 
 ## Table of Contents
 
@@ -31,34 +31,41 @@ In the current version, this library supports Angular versions 13+, ngx-translat
 
 ### Integration with ngx-translate
 
-You need to configure `TranslateModule` so it uses `TranslateMessageFormatCompiler` as the compiler:
+You need to provide `TranslateMessageFormatCompiler` as the compiler:
 
 ```ts
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { TranslateCompiler, TranslateModule } from "@ngx-translate/core";
-import { TranslateMessageFormatCompiler } from "ngx-translate-messageformat-compiler";
+import { bootstrapApplication } from "@angular/platform-browser";
 
-import { AppComponent } from "./app";
+import {
+  provideTranslateCompiler,
+  provideTranslateService,
+} from "@ngx-translate/core";
+import {
+  TranslateMessageFormatCompiler,
+  MESSAGE_FORMAT_CONFIG,
+} from "ngx-translate-messageformat-compiler";
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    TranslateModule.forRoot({
-      compiler: {
-        provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler,
-      },
+import { MyAppComponent } from "./my-app.component";
+
+bootstrapApplication(MyAppComponent, {
+  providers: [
+    provideTranslateService({
+      compiler: provideTranslateCompiler(TranslateMessageFormatCompiler),
     }),
+    // injecting a config is optional, and any values provided here will
+    // override the defaults (see below)
+    {
+      provide: MESSAGE_FORMAT_CONFIG,
+      useValue: {
+        throwOnError: true,
+        formatters: { upcase: (v) => v.toUpperCase() },
+      },
+    },
   ],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+});
 ```
 
-Check the [ngx-translate documentation](https://ngx-translate.org/reference/configuration/#standalone-components) for an example when using a "standalone" setup.
-
-You can override the values used when configuring MessageFormat by providing a configuration object for the `MESSAGE_FORMAT_CONFIG` injection token. Here's the default:
+You can override the values used by the plugin to configure MessageFormat by providing a configuration object for the `MESSAGE_FORMAT_CONFIG` injection token. Here's the default:
 
 ```ts
 {
@@ -76,22 +83,6 @@ You can override the values used when configuring MessageFormat by providing a c
 
 MessageFormat instances provide some options to influence its behaviour, among them `customFormatters`, `biDiSupport` and `strict`. Learn about their meaning here: <https://messageformat.github.io/messageformat/api/core.messageformatoptions/> (The names used in the MESSAGE_FORMAT_CONFIG object are slightly different for backward-compatibility reasons.)
 
-This is how you would enable bi-directional support and add a custom formatter, for example:
-
-```ts
-import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
-
-@NgModule({
-  // ...
-  providers: [{
-    provide: MESSAGE_FORMAT_CONFIG,
-    useValue: {
-      biDiSupport: true,
-      formatters: { upcase: v => v.toUpperCase() }
-    }
-  }]
-```
-
 ## Usage
 
 This library implements neither the syntax used for pluralization (et al) nor the "mechanics" for making translations work in your Angular app. The former is _MessageFormat_, the latter _ngx-translate_. Before you assume your problem is with _ngx-translate-messageformat-compiler_, please consult these ressources:
@@ -106,20 +97,7 @@ Here's two important differences to _ngx-translate_'s default syntax when using 
 
 ### Transitioning from _ngx-translate_ default syntax to _MessageFormat_ syntax
 
-If you have to transition on a message-by-message basis, you can do so by configuring a prefix that, if found on the message, will cause the compiler to "ignore" the message. This has the effect of falling back on _ngx-translate_'s default message interpolation.
-
-```ts
-import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
-
-@NgModule({
-  // ...
-  providers: [{
-    provide: MESSAGE_FORMAT_CONFIG,
-    useValue: {
-      fallbackPrefix: 'your_choice::'
-    }
-  }]
-```
+If you have to transition on a message-by-message basis, you can do so by configuring a prefix that, if found on the message, will cause the compiler to "ignore" the message. This has the effect of falling back on _ngx-translate_'s default message interpolation. Set the prefix using `fallbackPrefix` in the configuration object, e.g. `fallbackPrefix: 'your_choice::'`.
 
 ```json
 {
