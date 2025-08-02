@@ -53,6 +53,7 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
     this.fallbackPrefix = fallbackPrefix;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
   public compile<Result extends CompilationResult = MessageFunction<"string">>(
     value: string,
     lang: string,
@@ -70,7 +71,9 @@ export class TranslateMessageFormatCompiler extends TranslateCompiler {
         throw err;
       }
 
+      // eslint-disable-next-line no-console
       console.error(err);
+      // eslint-disable-next-line no-console
       console.error(
         `[ngx-translate-messageformat-compiler] Could not compile message for lang '${lang}': '${value}'`,
       );
@@ -122,8 +125,11 @@ function wrapInterpolationFunction(
     try {
       result = fn(params);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
+      // eslint-disable-next-line no-console
       console.error(
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         `[ngx-translate-messageformat-compiler] Could not interpolate '${message}' with params '${params}'`,
       );
     }
@@ -137,6 +143,7 @@ function compileFallback(
   lang: string,
 ): MessageFunction<"string"> {
   return () => {
+    // eslint-disable-next-line no-console
     console.warn(
       `[ngx-translate-messageformat-compiler] Falling back to original invalid message: '${message}' ('${lang}')`,
     );

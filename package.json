@@ -8,7 +8,7 @@
     "test": "ng test --watch=false",
     "test:watch": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "format": "prettier -c --ignore-path .gitignore '**/*.{ts,mjs,json}'"
   },
   "repository": {
     "type": "git",
@@ -41,11 +41,6 @@
     "@ngx-translate/core": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "devDependencies": {
-    "@angular-eslint/builder": "20.1.1",
-    "@angular-eslint/eslint-plugin": "20.1.1",
-    "@angular-eslint/eslint-plugin-template": "20.1.1",
-    "@angular-eslint/schematics": "20.1.1",
-    "@angular-eslint/template-parser": "20.1.1",
     "@angular/build": "20.1.4",
     "@angular/cli": "20.1.4",
     "@angular/common": "20.1.4",
@@ -55,16 +50,14 @@
     "@angular/language-service": "20.1.4",
     "@angular/platform-browser": "20.1.4",
     "@angular/platform-browser-dynamic": "20.1.4",
+    "@eslint/js": "9.32.0",
     "@messageformat/core": "3.4.0",
     "@ngx-translate/core": "17.0.0",
     "@types/jasmine": "5.1.8",
     "@types/jasminewd2": "2.0.13",
     "@types/node": "24.1.0",
-    "@typescript-eslint/eslint-plugin": "8.38.0",
-    "@typescript-eslint/parser": "8.38.0",
+    "angular-eslint": "20.1.1",
     "eslint": "9.32.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-prettier": "5.5.3",
     "jasmine-core": "5.9.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.4",
@@ -77,6 +70,7 @@
     "rxjs": "7.8.2",
     "tslint-config-prettier": "1.18.0",
     "typescript": "5.8.3",
+    "typescript-eslint": "8.38.0",
     "zone.js": "0.15.1"
   },
   "optionalDependencies": {
