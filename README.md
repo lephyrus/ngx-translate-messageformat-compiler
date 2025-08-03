@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/ngx-translate-messageformat-compiler.svg)](https://www.npmjs.com/package/ngx-translate-messageformat-compiler) ![build](https://github.com/lephyrus/ngx-translate-messageformat-compiler/workflows/build/badge.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-**[Example App](https://stackblitz.com/edit/stackblitz-starters-bunksjia?file=src%2Fapp%2Fapp.component.ts)** (StackBlitz)
+**[Example App](https://stackblitz.com/edit/ngx-translate-messageformat-compiler-example?file=src%2Fapp%2Fapp.component.ts)** (StackBlitz)
 
 ## Table of Contents
 
