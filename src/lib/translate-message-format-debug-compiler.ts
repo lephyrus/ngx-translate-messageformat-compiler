@@ -5,12 +5,15 @@ import {
   TranslateMessageFormatCompiler,
 } from "./translate-message-format-compiler";
 
-/* eslint-disable-next-line  no-console */
-const log = (...message: string[]) => console.log(tag, ...message);
+const log = (...message: string[]) => {
+  /* eslint-disable-next-line  no-console */
+  console.log(tag, ...message);
+};
 const tag = "[TranslateMessageFormatCompiler]";
 
 @Injectable()
 export class TranslateMessageFormatDebugCompiler extends TranslateMessageFormatCompiler {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
   public compile<Result extends CompilationResult = MessageFunction<"string">>(
     value: string,
     lang: string,

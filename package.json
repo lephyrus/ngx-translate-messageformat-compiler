@@ -1,6 +1,6 @@
 {
   "name": "ngx-translate-messageformat-compiler",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
@@ -8,7 +8,7 @@
     "test": "ng test --watch=false",
     "test:watch": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "format": "prettier -c --ignore-path .gitignore '**/*.{ts,mjs,json}'"
   },
   "repository": {
     "type": "git",
@@ -38,49 +38,42 @@
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
     "@messageformat/core": "^3.2.0",
-    "@ngx-translate/core": "^14.0.0 || ^15.0.0 || ^16.0.0"
+    "@ngx-translate/core": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "19.0.4",
-    "@angular-eslint/builder": "19.0.1",
-    "@angular-eslint/eslint-plugin": "19.0.1",
-    "@angular-eslint/eslint-plugin-template": "19.0.1",
-    "@angular-eslint/schematics": "19.0.1",
-    "@angular-eslint/template-parser": "19.0.1",
-    "@angular/cli": "19.0.4",
-    "@angular/common": "19.0.3",
-    "@angular/compiler": "19.0.3",
-    "@angular/compiler-cli": "19.0.3",
-    "@angular/core": "19.0.3",
-    "@angular/language-service": "19.0.3",
-    "@angular/platform-browser": "19.0.3",
-    "@angular/platform-browser-dynamic": "19.0.3",
+    "@angular/build": "20.1.4",
+    "@angular/cli": "20.1.4",
+    "@angular/common": "20.1.4",
+    "@angular/compiler": "20.1.4",
+    "@angular/compiler-cli": "20.1.4",
+    "@angular/core": "20.1.4",
+    "@angular/language-service": "20.1.4",
+    "@angular/platform-browser": "20.1.4",
+    "@angular/platform-browser-dynamic": "20.1.4",
+    "@eslint/js": "9.32.0",
     "@messageformat/core": "3.4.0",
-    "@ngx-translate/core": "16.0.3",
-    "@types/jasmine": "5.1.5",
+    "@ngx-translate/core": "17.0.0",
+    "@types/jasmine": "5.1.8",
     "@types/jasminewd2": "2.0.13",
-    "@types/node": "22.10.1",
-    "@typescript-eslint/eslint-plugin": "8.17.0",
-    "@typescript-eslint/parser": "8.17.0",
-    "eslint": "9.16.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.2.1",
-    "jasmine-core": "5.5.0",
+    "@types/node": "24.1.0",
+    "angular-eslint": "20.1.1",
+    "eslint": "9.32.0",
+    "jasmine-core": "5.9.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
     "karma-coverage-istanbul-reporter": "3.0.3",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "ng-packagr": "19.0.1",
-    "prettier": "3.4.2",
-    "protractor": "7.0.0",
-    "rxjs": "7.8.1",
+    "ng-packagr": "20.1.0",
+    "prettier": "3.6.2",
+    "rxjs": "7.8.2",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "5.6.3",
-    "zone.js": "0.15.0"
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.38.0",
+    "zone.js": "0.15.1"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.29.1"
+    "@rollup/rollup-linux-x64-gnu": "4.46.2"
   }
 }
